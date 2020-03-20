@@ -29,7 +29,6 @@ class ExpandableViewController: UIViewController {
     }
     
     @objc private func update() {
-        //heightConstraint.isActive = false
         let constant = isEnlarged ? collapsedHeight : deviceHeight - (tabController?.tabBar.frame.height ?? 0.0)
         isEnlarged = !isEnlarged
         UIView.animate(withDuration: 1) {
