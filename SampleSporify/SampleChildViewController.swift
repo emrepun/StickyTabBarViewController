@@ -8,10 +8,11 @@
 
 import UIKit
 
-class SampleChildViewController: UIViewController {
+class SampleChildViewController: UIViewController, Expandable {
     
     var expander: ViewControllerExpanding?
-
+    @IBOutlet weak var minimisedView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

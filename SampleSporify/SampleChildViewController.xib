@@ -9,6 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SampleChildViewController" customModule="SampleSporify" customModuleProvider="target">
             <connections>
+                <outlet property="minimisedView" destination="BiF-D1-eME" id="vvU-lP-hiY"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -29,15 +30,25 @@
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZlO-Kr-tty">
                     <rect key="frame" x="0.0" y="44" width="414" height="223.5"/>
-                    <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BiF-D1-eME">
+                    <rect key="frame" x="0.0" y="44" width="414" height="60"/>
+                    <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="d8e-J2-U8u"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="BiF-D1-eME" secondAttribute="trailing" id="8nQ-Jn-rW4"/>
                 <constraint firstItem="c05-Pg-lk2" firstAttribute="top" secondItem="ZlO-Kr-tty" secondAttribute="bottom" constant="16" id="D1L-Uw-hPE"/>
+                <constraint firstItem="BiF-D1-eME" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="EY6-VI-g6S"/>
+                <constraint firstItem="BiF-D1-eME" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="EmV-oQ-AJC"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="c05-Pg-lk2" secondAttribute="trailing" id="Ls6-wX-8UE"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ZlO-Kr-tty" secondAttribute="trailing" id="UJO-bg-cCJ"/>
                 <constraint firstItem="ZlO-Kr-tty" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="VjF-YK-yFj"/>
