@@ -17,6 +17,6 @@ class SampleChildViewController: UIViewController {
     }
     
     @IBAction func shutDownTapped(_ sender: Any) {
-        expander?.dismiss()
+        expander?.dismiss(withAnimation: true)
     }
 }

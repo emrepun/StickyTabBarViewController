@@ -8,8 +8,8 @@
 
 import UIKit
 
-protocol ExpandableViewControllerDelegate {
-    func dismiss()
+protocol ViewControllerExpanding {
+    func dismiss(withAnimation: Bool)
 }
 
 class ExpandableViewController: UIViewController {
@@ -21,11 +21,35 @@ class ExpandableViewController: UIViewController {
     
     let deviceHeight: CGFloat = UIScreen.main.bounds.height
     let collapsedHeight: CGFloat = 50.0
-
+    let heightBeforeDismissal: CGFloat = 0.0
+    
+    private let childVC: UIViewController
+    
+    init(withChildVC childVC: UIViewController) {
+        self.childVC = childVC
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(update))
         view.addGestureRecognizer(gestureRecognizer)
+        view.clipsToBounds = true
+        configureChildVC()
+    }
+    
+    private func configureChildVC() {
+        addChild(childVC)
+        view.addSubview(childVC.view)
+        childVC.view.topAnchor.constraint(equalTo: view.topAnchor, constant: 0.0).isActive = true
+        childVC.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0.0).isActive = true
+        childVC.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0.0).isActive = true
+        childVC.view.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0.0).isActive = true
+        childVC.didMove(toParent: self)
     }
     
     @objc private func update() {
@@ -37,9 +61,24 @@ class ExpandableViewController: UIViewController {
             self.tabController?.view.layoutIfNeeded()
         }
     }
-    
-    func dismiss() {
-        tabController?.removeCollapsedView()
+}
+
+extension ExpandableViewController: ViewControllerExpanding {
+    func dismiss(withAnimation: Bool) {
+        if withAnimation {
+            UIView.animate(withDuration: 1,
+                           animations: {
+                            self.heightConstraint.constant = self.heightBeforeDismissal
+                            self.view.layoutIfNeeded()
+                            self.tabController?.view.layoutIfNeeded()
+            }) { (completed) in
+                if completed {
+                    self.tabController?.removeCollapsedView()
+                }
+            }
+        } else {
+            tabController?.removeCollapsedView()
+        }
+        
     }
-    
 }

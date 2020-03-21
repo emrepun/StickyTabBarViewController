@@ -20,9 +20,13 @@ class MainTabBarController: UITabBarController {
         guard collapsableVCFlow == nil else {
             return
         }
-        collapsableVCFlow = ExpandableViewController()
+        let childVCOfExpandable = SampleChildViewController()
+        //childVCOfExpandable.expander =
+        collapsableVCFlow = ExpandableViewController(withChildVC: childVCOfExpandable)
+        childVCOfExpandable.expander = collapsableVCFlow
         collapsableVCFlow!.tabController = self
         view.addSubview(collapsableVCFlow!.view)
+        addChild(collapsableVCFlow!)
         collapsableVCFlow!.view.translatesAutoresizingMaskIntoConstraints = false
         collapsableVCFlow!.view.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         collapsableVCFlow!.view.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
