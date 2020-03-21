@@ -17,6 +17,8 @@
 		C38980A224256AD800F5F786 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38980A124256AD800F5F786 /* SceneDelegate.swift */; };
 		C38980A824256B8B00F5F786 /* ExpandableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38980A624256B8B00F5F786 /* ExpandableViewController.swift */; };
 		C38980A924256B8B00F5F786 /* ExpandableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C38980A724256B8B00F5F786 /* ExpandableViewController.xib */; };
+		C38980AC24257D5700F5F786 /* SampleChildViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38980AA24257D5700F5F786 /* SampleChildViewController.swift */; };
+		C38980AD24257D5700F5F786 /* SampleChildViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C38980AB24257D5700F5F786 /* SampleChildViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		C38980A124256AD800F5F786 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		C38980A624256B8B00F5F786 /* ExpandableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableViewController.swift; sourceTree = "<group>"; };
 		C38980A724256B8B00F5F786 /* ExpandableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpandableViewController.xib; sourceTree = "<group>"; };
+		C38980AA24257D5700F5F786 /* SampleChildViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleChildViewController.swift; sourceTree = "<group>"; };
+		C38980AB24257D5700F5F786 /* SampleChildViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SampleChildViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +75,8 @@
 				C389809D24256A4E00F5F786 /* SecondViewController.swift */,
 				C38980A624256B8B00F5F786 /* ExpandableViewController.swift */,
 				C38980A724256B8B00F5F786 /* ExpandableViewController.xib */,
+				C38980AA24257D5700F5F786 /* SampleChildViewController.swift */,
+				C38980AB24257D5700F5F786 /* SampleChildViewController.xib */,
 				C389808D242569D100F5F786 /* Main.storyboard */,
 				C3898090242569D200F5F786 /* Assets.xcassets */,
 				C3898092242569D200F5F786 /* LaunchScreen.storyboard */,
@@ -141,6 +147,7 @@
 				C3898094242569D200F5F786 /* LaunchScreen.storyboard in Resources */,
 				C3898091242569D200F5F786 /* Assets.xcassets in Resources */,
 				C389808F242569D100F5F786 /* Main.storyboard in Resources */,
+				C38980AD24257D5700F5F786 /* SampleChildViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,6 +163,7 @@
 				C389809E24256A4E00F5F786 /* SecondViewController.swift in Sources */,
 				C389808C242569D100F5F786 /* ViewController.swift in Sources */,
 				C38980A024256A9500F5F786 /* MainTabBarController.swift in Sources */,
+				C38980AC24257D5700F5F786 /* SampleChildViewController.swift in Sources */,
 				C3898088242569D100F5F786 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
