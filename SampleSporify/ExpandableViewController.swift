@@ -110,8 +110,10 @@ class ExpandableViewController: UIViewController {
                                                         switch state {
                                                         case .expanded:
                                                             self.heightConstraint.constant = self.deviceHeight - (self.tabController?.tabBar.frame.height ?? 0.0)
+                                                            self.minimisedView.alpha = 0.0
                                                         case .collapsed:
                                                             self.heightConstraint.constant = self.collapsedHeight
+                                                            self.minimisedView.alpha = 1.0
                                                         }
                                                         self.view.layoutIfNeeded()
                                                         self.tabController?.view.layoutIfNeeded()
