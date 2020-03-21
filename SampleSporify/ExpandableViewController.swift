@@ -42,7 +42,9 @@ class ExpandableViewController: UIViewController {
         return isEnlarged ? .collapsed : .expanded
     }
     
-    var runningAnimations = [UIViewPropertyAnimator]()
+    lazy var isBeginningUpwards = !isEnlarged
+    
+    var runningAnimation: UIViewPropertyAnimator?
     var animationProgressWhenInterrupted: CGFloat = 0
     
     init(withChildVC childVC: Expandable,
@@ -90,22 +92,39 @@ class ExpandableViewController: UIViewController {
     @objc private func handlePan(recognizer: UIPanGestureRecognizer) {
         switch recognizer.state {
         case .began:
+            let velocity = recognizer.velocity(in: childVC.view)
+            isBeginningUpwards = isDirectionUpwards(for: velocity)
             startInteractiveTransition(state: nextState, duration: 1)
         case .changed:
+            let velocity = recognizer.velocity(in: childVC.view)
+            isBeginningUpwards = isDirectionUpwards(for: velocity)
             let translation = recognizer.translation(in: childVC.view)
             var fractionComplete = translation.y / deviceHeight
             fractionComplete = isEnlarged ? fractionComplete : -fractionComplete
             updateInteractiveTransition(fractionCompleted: fractionComplete)
         case .ended:
-            continueInteractiveTransition()
+            continueInteractiveTransition(isReversed: shouldReverseAnimation())
         default:
             break
         }
     }
     
+    private func shouldReverseAnimation() -> Bool {
+        if isEnlarged && !isBeginningUpwards {
+            return true
+        } else if !isEnlarged && isBeginningUpwards {
+            return true
+        }
+        return false
+    }
+    
+    private func isDirectionUpwards(for velocity: CGPoint) -> Bool {
+        return velocity.y > 0
+    }
+    
     private func animateTransitionIfNeeded(state: state, duration: TimeInterval) {
-        if runningAnimations.isEmpty {
-            let frameAnimator = UIViewPropertyAnimator(duration: duration,
+        if runningAnimation == nil {
+            runningAnimation = UIViewPropertyAnimator(duration: duration,
                                                        dampingRatio: 1) {
                                                         switch state {
                                                         case .expanded:
@@ -119,37 +138,32 @@ class ExpandableViewController: UIViewController {
                                                         self.tabController?.view.layoutIfNeeded()
             }
             
-            frameAnimator.addCompletion { (_) in
+            runningAnimation?.addCompletion { (_) in
                 self.isEnlarged = !self.isEnlarged
-                self.runningAnimations.removeAll()
+                self.isBeginningUpwards = !self.isEnlarged
+                self.runningAnimation = nil
             }
             
-            frameAnimator.startAnimation()
-            runningAnimations.append(frameAnimator)
+            runningAnimation?.startAnimation()
         }
     }
     
     private func startInteractiveTransition(state: state, duration: TimeInterval) {
-        if runningAnimations.isEmpty {
+        if runningAnimation == nil {
             animateTransitionIfNeeded(state: state, duration: duration)
         }
-        
-        for animator in runningAnimations {
-            animator.pauseAnimation()
-            animationProgressWhenInterrupted = animator.fractionComplete
-        }
+        runningAnimation?.pauseAnimation()
+        animationProgressWhenInterrupted = runningAnimation?.fractionComplete ?? 0.0
     }
     
     private func updateInteractiveTransition(fractionCompleted: CGFloat) {
-        for animator in runningAnimations {
-            animator.fractionComplete = fractionCompleted + animationProgressWhenInterrupted
-        }
+        runningAnimation?.fractionComplete = fractionCompleted + animationProgressWhenInterrupted
     }
     
-    private func continueInteractiveTransition() {
-        for animator in runningAnimations {
-            animator.continueAnimation(withTimingParameters: nil, durationFactor: 0)
-        }
+    private func continueInteractiveTransition(isReversed: Bool) {
+        runningAnimation?.isReversed = isReversed
+        runningAnimation?.pausesOnCompletion = isReversed
+        runningAnimation?.continueAnimation(withTimingParameters: nil, durationFactor: 0)
     }
 }
 
