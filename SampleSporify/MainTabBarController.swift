@@ -21,7 +21,6 @@ class MainTabBarController: UITabBarController {
             return
         }
         let childVCOfExpandable = SampleChildViewController()
-        //childVCOfExpandable.expander =
         collapsableVCFlow = ExpandableViewController(withChildVC: childVCOfExpandable)
         childVCOfExpandable.expander = collapsableVCFlow
         collapsableVCFlow!.tabController = self
