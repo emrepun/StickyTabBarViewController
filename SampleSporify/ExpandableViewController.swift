@@ -33,15 +33,6 @@ public class ExpandableViewController: UIViewController {
     
     // MARK: - Animation properties
     
-    enum state {
-        case expanded
-        case collapsed
-    }
-    
-    var nextState: state {
-        return isEnlarged ? .collapsed : .expanded
-    }
-    
     lazy var isBeginningUpwards = !isEnlarged
     
     var runningAnimation: UIViewPropertyAnimator?
@@ -96,7 +87,7 @@ public class ExpandableViewController: UIViewController {
         case .began:
             let velocity = recognizer.velocity(in: childVC.view)
             isBeginningUpwards = isDirectionUpwards(for: velocity)
-            startInteractiveTransition(state: nextState, duration: 1)
+            startInteractiveTransition(isEnlarging: !isEnlarged, duration: 1)
         case .changed:
             let velocity = recognizer.velocity(in: childVC.view)
             isBeginningUpwards = isDirectionUpwards(for: velocity)
@@ -127,15 +118,14 @@ public class ExpandableViewController: UIViewController {
         return velocity.y > 0
     }
     
-    private func animateTransitionIfNeeded(state: state, duration: TimeInterval) {
+    private func animateTransitionIfNeeded(isEnlarging: Bool, duration: TimeInterval) {
         if runningAnimation == nil {
             runningAnimation = UIViewPropertyAnimator(duration: duration,
                                                        dampingRatio: 1) {
-                                                        switch state {
-                                                        case .expanded:
+                                                        if isEnlarging {
                                                             self.heightConstraint.constant = self.deviceHeight - (self.tabController?.tabBar.frame.height ?? 0.0)
                                                             self.minimisedView.alpha = 0.0
-                                                        case .collapsed:
+                                                        } else {
                                                             self.heightConstraint.constant = self.collapsedHeight
                                                             self.minimisedView.alpha = 1.0
                                                         }
@@ -153,9 +143,9 @@ public class ExpandableViewController: UIViewController {
         }
     }
     
-    private func startInteractiveTransition(state: state, duration: TimeInterval) {
+    private func startInteractiveTransition(isEnlarging: Bool, duration: TimeInterval) {
         if runningAnimation == nil {
-            animateTransitionIfNeeded(state: state, duration: duration)
+            animateTransitionIfNeeded(isEnlarging: isEnlarging, duration: duration)
         }
         runningAnimation?.pauseAnimation()
         animationProgressWhenInterrupted = runningAnimation?.fractionComplete ?? 0.0

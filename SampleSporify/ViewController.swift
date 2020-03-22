@@ -10,8 +10,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var tabController: MainTabBarController? {
-        if let tabBarController = tabBarController as? MainTabBarController {
+    var tabController: StickyViewControllerSupporting? {
+        if let tabBarController = tabBarController as? StickyViewControllerSupporting {
             return tabBarController
         }
         return nil
