@@ -6,24 +6,21 @@
 //  Copyright © 2020 Emre Havan. All rights reserved.
 //
 
-import UIKit
+public protocol StickyViewControllerSupporting: UITabBarController {
+    var collapsableVCFlow: ExpandableViewController? { get set }
+    func configureCollapsedTrainingView(withChildViewController childViewController: Expandable)
+    func removeCollapsedView()
+}
 
-class MainTabBarController: UITabBarController {
+extension StickyViewControllerSupporting {
     
-    var collapsableVCFlow: ExpandableViewController?
-        
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    final func configureCollapsedTrainingView() {
+    func configureCollapsedTrainingView(withChildViewController childViewController: Expandable) {
         guard collapsableVCFlow == nil else {
             return
         }
-        let childVCOfExpandable = SampleChildViewController()
-        childVCOfExpandable.loadView()
-        collapsableVCFlow = ExpandableViewController(withChildVC: childVCOfExpandable,
-                                                     minimisedView: childVCOfExpandable.minimisedView)
+        childViewController.loadView()
+        collapsableVCFlow = ExpandableViewController(withChildVC: childViewController,
+                                                     minimisedView: childViewController.minimisedView)
         collapsableVCFlow!.tabController = self
         view.addSubview(collapsableVCFlow!.view)
         addChild(collapsableVCFlow!)
@@ -39,11 +36,21 @@ class MainTabBarController: UITabBarController {
         collapsableVCFlow!.didMove(toParent: self)
     }
     
-    final func removeCollapsedView() {
+    func removeCollapsedView() {
         if let collapsableVCFlow = collapsableVCFlow {
             collapsableVCFlow.view.removeFromSuperview()
             collapsableVCFlow.removeFromParent()
             self.collapsableVCFlow = nil
         }
+    }
+}
+
+import UIKit
+
+class MainTabBarController: UITabBarController, StickyViewControllerSupporting {
+    var collapsableVCFlow: ExpandableViewController?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
     }
 }

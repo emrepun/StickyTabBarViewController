@@ -8,21 +8,21 @@
 
 import UIKit
 
-protocol ViewControllerExpanding: UIViewController {
+public protocol ViewControllerExpanding: UIViewController {
     func dismiss(withAnimation: Bool)
 }
 
-protocol Expandable: UIViewController {
+public protocol Expandable: UIViewController {
     var minimisedView: UIView! { get }
     var expander: ViewControllerExpanding? { get set }
 }
 
-class ExpandableViewController: UIViewController {
+public class ExpandableViewController: UIViewController {
     
     var heightConstraint: NSLayoutConstraint!
     var isEnlarged = false
     
-    weak var tabController: MainTabBarController?
+    weak var tabController: StickyViewControllerSupporting?
     
     let deviceHeight: CGFloat = UIScreen.main.bounds.height
     let collapsedHeight: CGFloat = 60.0
@@ -58,7 +58,7 @@ class ExpandableViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(enlargeWithTap))
         minimisedView.addGestureRecognizer(gestureRecognizer)
@@ -173,7 +173,7 @@ class ExpandableViewController: UIViewController {
 }
 
 extension ExpandableViewController: ViewControllerExpanding {
-    func dismiss(withAnimation: Bool) {
+    public func dismiss(withAnimation: Bool) {
         if withAnimation {
             UIView.animate(withDuration: 1,
                            animations: {

@@ -22,7 +22,8 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     @IBAction func tapped(_ sender: Any) {
-        tabController?.configureCollapsedTrainingView()
+        let viewControllerToStick = SampleChildViewController()
+        tabController?.configureCollapsedTrainingView(withChildViewController: viewControllerToStick)
     }
     
     @IBAction func removerTapped(_ sender: Any) {
