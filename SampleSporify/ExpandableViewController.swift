@@ -101,6 +101,9 @@ class ExpandableViewController: UIViewController {
             let translation = recognizer.translation(in: childVC.view)
             var fractionComplete = translation.y / deviceHeight
             fractionComplete = isEnlarged ? fractionComplete : -fractionComplete
+            if runningAnimation?.isReversed ?? false {
+                fractionComplete = -fractionComplete
+            }
             updateInteractiveTransition(fractionCompleted: fractionComplete)
         case .ended:
             continueInteractiveTransition(isReversed: shouldReverseAnimation())
