@@ -35,8 +35,7 @@ public class ExpandableViewController: UIViewController {
     weak var tabController: StickyViewControllerSupporting?
     
     let deviceHeight: CGFloat = UIScreen.main.bounds.height
-    let collapsedHeight: CGFloat = 60.0
-    let heightBeforeDismissal: CGFloat = 0.0
+    var collapsedHeight: CGFloat
     
     private let childVC: Expandable
     private var minimisedView: UIView
@@ -49,8 +48,10 @@ public class ExpandableViewController: UIViewController {
     var animationProgressWhenInterrupted: CGFloat = 0
     
     init(withChildVC childVC: Expandable,
+         collapsedHeight: CGFloat,
          minimisedView: UIView) {
         self.childVC = childVC
+        self.collapsedHeight = collapsedHeight
         self.minimisedView = minimisedView
         super.init(nibName: nil, bundle: nil)
     }

@@ -8,6 +8,7 @@
 
 public protocol StickyViewControllerSupporting: UITabBarController {
     var collapsableVCFlow: ExpandableViewController? { get set }
+    var collapsedHeight: CGFloat { get }
     func configureCollapsedTrainingView(withChildViewController childViewController: Expandable)
     func removeCollapsedView(withAnimation: Bool, duration: TimeInterval)
 }
@@ -21,6 +22,7 @@ extension StickyViewControllerSupporting {
         childViewController.loadView()
         childViewController.expander = self
         collapsableVCFlow = ExpandableViewController(withChildVC: childViewController,
+                                                     collapsedHeight: collapsedHeight,
                                                      minimisedView: childViewController.minimisedView)
         collapsableVCFlow!.tabController = self
         view.addSubview(collapsableVCFlow!.view)
@@ -44,7 +46,7 @@ extension StickyViewControllerSupporting {
         if withAnimation {
             UIView.animate(withDuration: duration,
                            animations: {
-                            collapsableVCFlow.heightConstraint.constant = collapsableVCFlow.heightBeforeDismissal
+                            collapsableVCFlow.heightConstraint.constant = 0.0
                             collapsableVCFlow.view.layoutIfNeeded()
                             self.view.layoutIfNeeded()
             }) { (completed) in
@@ -65,6 +67,8 @@ extension StickyViewControllerSupporting {
 import UIKit
 
 class MainTabBarController: UITabBarController, StickyViewControllerSupporting {
+    var collapsedHeight: CGFloat = 60.0
+    
     var collapsableVCFlow: ExpandableViewController?
     
     override func viewDidLoad() {
