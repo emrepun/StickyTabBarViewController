@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol ViewControllerExpanding {
+protocol ViewControllerExpanding: UIViewController {
     func dismiss(withAnimation: Bool)
 }
 
@@ -22,7 +22,7 @@ class ExpandableViewController: UIViewController {
     var heightConstraint: NSLayoutConstraint!
     var isEnlarged = false
     
-    var tabController: MainTabBarController?
+    weak var tabController: MainTabBarController?
     
     let deviceHeight: CGFloat = UIScreen.main.bounds.height
     let collapsedHeight: CGFloat = 60.0
