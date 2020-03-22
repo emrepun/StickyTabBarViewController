@@ -60,7 +60,7 @@ class ExpandableViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(update))
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(enlargeWithTap))
         minimisedView.addGestureRecognizer(gestureRecognizer)
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
         view.addGestureRecognizer(panGestureRecognizer)
@@ -79,11 +79,13 @@ class ExpandableViewController: UIViewController {
         childVC.didMove(toParent: self)
     }
     
-    @objc private func update() {
+    @objc private func enlargeWithTap() {
         let constant = isEnlarged ? collapsedHeight : deviceHeight - (tabController?.tabBar.frame.height ?? 0.0)
+        let minimisedAlpha: CGFloat = isEnlarged ? 1.0 : 0.0
         isEnlarged = !isEnlarged
         UIView.animate(withDuration: 1) {
             self.heightConstraint.constant = constant
+            self.minimisedView.alpha = minimisedAlpha
             self.view.layoutIfNeeded()
             self.tabController?.view.layoutIfNeeded()
         }
