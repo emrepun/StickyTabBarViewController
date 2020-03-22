@@ -10,7 +10,6 @@ import UIKit
 
 class SampleChildViewController: UIViewController, Expandable {
     
-    weak var expander: ViewControllerExpanding?
     @IBOutlet weak var minimisedView: UIView!
     
     override func viewDidLoad() {
@@ -18,6 +17,6 @@ class SampleChildViewController: UIViewController, Expandable {
     }
     
     @IBAction func shutDownTapped(_ sender: Any) {
-        expander?.dismiss(withAnimation: true)
+        expander?.removeCollapsedView(withAnimation: true, duration: 0.5)
     }
 }

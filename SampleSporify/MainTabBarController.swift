@@ -9,7 +9,7 @@
 public protocol StickyViewControllerSupporting: UITabBarController {
     var collapsableVCFlow: ExpandableViewController? { get set }
     func configureCollapsedTrainingView(withChildViewController childViewController: Expandable)
-    func removeCollapsedView()
+    func removeCollapsedView(withAnimation: Bool, duration: TimeInterval)
 }
 
 extension StickyViewControllerSupporting {
@@ -19,6 +19,7 @@ extension StickyViewControllerSupporting {
             return
         }
         childViewController.loadView()
+        childViewController.expander = self
         collapsableVCFlow = ExpandableViewController(withChildVC: childViewController,
                                                      minimisedView: childViewController.minimisedView)
         collapsableVCFlow!.tabController = self
@@ -36,8 +37,24 @@ extension StickyViewControllerSupporting {
         collapsableVCFlow!.didMove(toParent: self)
     }
     
-    func removeCollapsedView() {
-        if let collapsableVCFlow = collapsableVCFlow {
+    func removeCollapsedView(withAnimation: Bool, duration: TimeInterval = 1.0) {
+        guard let collapsableVCFlow = collapsableVCFlow else {
+            return
+        }
+        if withAnimation {
+            UIView.animate(withDuration: duration,
+                           animations: {
+                            collapsableVCFlow.heightConstraint.constant = collapsableVCFlow.heightBeforeDismissal
+                            collapsableVCFlow.view.layoutIfNeeded()
+                            self.view.layoutIfNeeded()
+            }) { (completed) in
+                if completed {
+                    collapsableVCFlow.view.removeFromSuperview()
+                    collapsableVCFlow.removeFromParent()
+                    self.collapsableVCFlow = nil
+                }
+            }
+        } else {
             collapsableVCFlow.view.removeFromSuperview()
             collapsableVCFlow.removeFromParent()
             self.collapsableVCFlow = nil

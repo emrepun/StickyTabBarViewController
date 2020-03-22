@@ -8,13 +8,23 @@
 
 import UIKit
 
-public protocol ViewControllerExpanding: UIViewController {
-    func dismiss(withAnimation: Bool)
-}
-
 public protocol Expandable: UIViewController {
     var minimisedView: UIView! { get }
-    var expander: ViewControllerExpanding? { get set }
+    var expander: StickyViewControllerSupporting? { get set }
+}
+
+public extension Expandable {
+    var expander: StickyViewControllerSupporting? {
+        get {
+            if let tabBarController = UIApplication.shared.keyWindow?.rootViewController as? StickyViewControllerSupporting {
+                return tabBarController
+            } else {
+                return nil
+            }
+        } set {
+            
+        }
+    }
 }
 
 public class ExpandableViewController: UIViewController {
@@ -60,7 +70,6 @@ public class ExpandableViewController: UIViewController {
     }
     
     private func configureChildVC() {
-        childVC.expander = self
         addChild(childVC)
         view.addSubview(childVC.view)
         childVC.view.topAnchor.constraint(equalTo: view.topAnchor, constant: 0.0).isActive = true
@@ -159,25 +168,5 @@ public class ExpandableViewController: UIViewController {
         runningAnimation?.isReversed = isReversed
         runningAnimation?.pausesOnCompletion = isReversed
         runningAnimation?.continueAnimation(withTimingParameters: nil, durationFactor: 0)
-    }
-}
-
-extension ExpandableViewController: ViewControllerExpanding {
-    public func dismiss(withAnimation: Bool) {
-        if withAnimation {
-            UIView.animate(withDuration: 1,
-                           animations: {
-                            self.heightConstraint.constant = self.heightBeforeDismissal
-                            self.view.layoutIfNeeded()
-                            self.tabController?.view.layoutIfNeeded()
-            }) { (completed) in
-                if completed {
-                    self.tabController?.removeCollapsedView()
-                }
-            }
-        } else {
-            tabController?.removeCollapsedView()
-        }
-        
     }
 }
