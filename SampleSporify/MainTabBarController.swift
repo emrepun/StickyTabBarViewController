@@ -16,7 +16,7 @@ class MainTabBarController: UITabBarController {
         super.viewDidLoad()
     }
     
-    func configureCollapsedTrainingView() {
+    final func configureCollapsedTrainingView() {
         guard collapsableVCFlow == nil else {
             return
         }
@@ -39,7 +39,7 @@ class MainTabBarController: UITabBarController {
         collapsableVCFlow!.didMove(toParent: self)
     }
     
-    func removeCollapsedView() {
+    final func removeCollapsedView() {
         if let collapsableVCFlow = collapsableVCFlow {
             collapsableVCFlow.view.removeFromSuperview()
             collapsableVCFlow.removeFromParent()
