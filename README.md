@@ -9,7 +9,7 @@ var collapsedHeight: CGFloat (Set it to minimised view's height you want)
 var collapsableVCFlow: ExpandableViewController? (keep it as optional)
 ```
 
-# Do not override following methods:
+# Do not override or implement following methods:
 ```
 func configureCollapsedTrainingView(withChildViewController childViewController: Expandable)
 func removeCollapsedView(withAnimation: Bool, duration: TimeInterval)
