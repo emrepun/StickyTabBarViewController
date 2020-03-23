@@ -80,16 +80,25 @@ public class ExpandableViewController: UIViewController {
         childVC.didMove(toParent: self)
     }
     
-    @objc private func enlargeWithTap() {
-        let constant = isEnlarged ? collapsedHeight : deviceHeight - (tabController?.tabBar.frame.height ?? 0.0)
-        let minimisedAlpha: CGFloat = isEnlarged ? 1.0 : 0.0
-        isEnlarged = !isEnlarged
-        UIView.animate(withDuration: 1) {
-            self.heightConstraint.constant = constant
-            self.minimisedView.alpha = minimisedAlpha
-            self.view.layoutIfNeeded()
-            self.tabController?.view.layoutIfNeeded()
+    @objc private func enlargeWithTap(recognizer: UITapGestureRecognizer) {
+        switch recognizer.state {
+        case .ended:
+            animateTransitionIfNeeded(isEnlarging: !isEnlarged, duration: 1)
+        default:
+            break
         }
+        
+        // dont delete yet, its old uiview animate style.
+        
+//        let constant = isEnlarged ? collapsedHeight : deviceHeight - (tabController?.tabBar.frame.height ?? 0.0)
+//        let minimisedAlpha: CGFloat = isEnlarged ? 1.0 : 0.0
+//        isEnlarged = !isEnlarged
+//        UIView.animate(withDuration: 1) {
+//            self.heightConstraint.constant = constant
+//            self.minimisedView.alpha = minimisedAlpha
+//            self.view.layoutIfNeeded()
+//            self.tabController?.view.layoutIfNeeded()
+//        }
     }
     
     @objc private func handlePan(recognizer: UIPanGestureRecognizer) {
