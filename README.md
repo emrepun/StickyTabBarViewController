@@ -3,15 +3,15 @@ Sticky and Collapsible View on top of tab bar development
 
 Conform to StickyViewControllerSupporting from your custom tab bar controller
 
-Implement following properties:
+# Implement following properties:
 var collapsedHeight: CGFloat (Set it to minimised view's height you want)
 var collapsableVCFlow: ExpandableViewController? (keep it as optional)
 
-Do not override following methods:
+# Do not override following methods:
 func configureCollapsedTrainingView(withChildViewController childViewController: Expandable)
 func removeCollapsedView(withAnimation: Bool, duration: TimeInterval)
 
-Configure a ViewController in collapsed state as following:
+# Configure a ViewController in collapsed state as following:
 
 if let tabBarController = tabBarController as? StickyViewControllerSupporting {
     let viewControllerToStick = SampleChildViewController() // example VC
