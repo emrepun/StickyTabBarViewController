@@ -87,18 +87,6 @@ public class ExpandableViewController: UIViewController {
         default:
             break
         }
-        
-        // dont delete yet, its old uiview animate style.
-        
-//        let constant = isEnlarged ? collapsedHeight : deviceHeight - (tabController?.tabBar.frame.height ?? 0.0)
-//        let minimisedAlpha: CGFloat = isEnlarged ? 1.0 : 0.0
-//        isEnlarged = !isEnlarged
-//        UIView.animate(withDuration: 1) {
-//            self.heightConstraint.constant = constant
-//            self.minimisedView.alpha = minimisedAlpha
-//            self.view.layoutIfNeeded()
-//            self.tabController?.view.layoutIfNeeded()
-//        }
     }
     
     @objc private func handlePan(recognizer: UIPanGestureRecognizer) {
@@ -148,13 +136,19 @@ public class ExpandableViewController: UIViewController {
                                                             self.heightConstraint.constant = self.collapsedHeight
                                                             self.minimisedView.alpha = 1.0
                                                         }
+                                                        self.view.setNeedsLayout()
+                                                        self.tabController?.view.setNeedsLayout()
                                                         self.view.layoutIfNeeded()
                                                         self.tabController?.view.layoutIfNeeded()
             }
             
-            runningAnimation?.addCompletion { (_) in
-                self.isEnlarged = !self.isEnlarged
-                self.isBeginningUpwards = !self.isEnlarged
+            runningAnimation?.addCompletion { (position) in
+                switch position {
+                case .end:
+                    self.isEnlarged = !self.isEnlarged
+                default:
+                    ()
+                }
                 self.runningAnimation = nil
             }
             
@@ -176,7 +170,6 @@ public class ExpandableViewController: UIViewController {
     
     private func continueInteractiveTransition(isReversed: Bool) {
         runningAnimation?.isReversed = isReversed
-        runningAnimation?.pausesOnCompletion = isReversed
         runningAnimation?.continueAnimation(withTimingParameters: nil, durationFactor: 0)
     }
 }
