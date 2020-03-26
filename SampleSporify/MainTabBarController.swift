@@ -33,7 +33,7 @@ extension StickyViewControllerSupporting {
         collapsableVCFlow!.view.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
 
         collapsableVCFlow!.view.bottomAnchor.constraint(equalTo: tabBar.topAnchor).isActive = true
-        let heightConstraint = collapsableVCFlow!.view.heightAnchor.constraint(equalToConstant: 50.0)
+        let heightConstraint = collapsableVCFlow!.view.heightAnchor.constraint(equalToConstant: collapsedHeight)
         heightConstraint.isActive = true
         collapsableVCFlow!.heightConstraint = heightConstraint
 
