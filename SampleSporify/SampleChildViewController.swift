@@ -19,4 +19,7 @@ class SampleChildViewController: UIViewController, Expandable {
     @IBAction func shutDownTapped(_ sender: Any) {
         expander?.removeCollapsibleView(withAnimation: true, duration: 0.5)
     }
+    @IBAction func collapseFromExpandedTapped(_ sender: Any) {
+        expander?.collapseCollapsibleVC(duration: 0.5)
+    }
 }
