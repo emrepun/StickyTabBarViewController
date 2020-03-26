@@ -38,7 +38,7 @@ public class ExpandableViewController: UIViewController {
     var collapsedHeight: CGFloat
     
     private let childVC: Expandable
-    private var minimisedView: UIView
+    var minimisedView: UIView
     
     // MARK: - Animation properties
     
@@ -68,6 +68,10 @@ public class ExpandableViewController: UIViewController {
         view.addGestureRecognizer(panGestureRecognizer)
         view.clipsToBounds = true
         configureChildVC()
+    }
+    
+    func collapse() {
+        animateTransitionIfNeeded(isEnlarging: !isEnlarged, duration: 1)
     }
     
     private func configureChildVC() {

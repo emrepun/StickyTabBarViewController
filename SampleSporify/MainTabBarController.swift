@@ -68,11 +68,7 @@ extension StickyViewControllerSupporting {
         guard let collapsableVCFlow = collapsableVCFlow else {
             return
         }
-        UIView.animate(withDuration: duration) {
-            collapsableVCFlow.heightConstraint.constant = self.collapsedHeight
-            collapsableVCFlow.view.layoutIfNeeded()
-            self.view.layoutIfNeeded()
-        }
+        collapsableVCFlow.collapse()
     }
 }
 
