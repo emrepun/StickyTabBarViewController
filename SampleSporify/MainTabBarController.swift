@@ -21,7 +21,7 @@ public class StickyViewControllerSupportingTabBarController: UITabBarController,
     public var collapsedHeight: CGFloat = 50.0
     public var animationDuration: TimeInterval = 0.5
     
-    public func configureCollapsedTrainingView(withChildViewController childViewController: Expandable) {
+    final public func configureCollapsedTrainingView(withChildViewController childViewController: Expandable) {
         guard collapsableVCFlow == nil else {
             return
         }
@@ -46,7 +46,7 @@ public class StickyViewControllerSupportingTabBarController: UITabBarController,
         collapsableVCFlow!.didMove(toParent: self)
     }
     
-    public func removeCollapsibleView(withAnimation: Bool, duration: TimeInterval) {
+    final public func removeCollapsibleView(withAnimation: Bool, duration: TimeInterval) {
         guard let collapsableVCFlow = collapsableVCFlow else {
             return
         }
@@ -70,7 +70,7 @@ public class StickyViewControllerSupportingTabBarController: UITabBarController,
         }
     }
     
-    public func collapseCollapsibleVC(duration: TimeInterval) {
+    final public func collapseCollapsibleVC(duration: TimeInterval) {
         guard let collapsableVCFlow = collapsableVCFlow else {
             return
         }
@@ -79,7 +79,7 @@ public class StickyViewControllerSupportingTabBarController: UITabBarController,
 }
 
 class MainTabBarController: StickyViewControllerSupportingTabBarController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
