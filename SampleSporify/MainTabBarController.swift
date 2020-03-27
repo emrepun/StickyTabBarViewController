@@ -8,7 +8,6 @@
 import UIKit
 
 public protocol StickyViewControllerSupporting: UITabBarController {
-    var collapsableVCFlow: ExpandableViewController? { get set }
     var collapsedHeight: CGFloat { get }
     var animationDuration: TimeInterval { get }
     func configureCollapsedTrainingView(withChildViewController childViewController: Expandable)
@@ -17,7 +16,7 @@ public protocol StickyViewControllerSupporting: UITabBarController {
 }
 
 public class StickyViewControllerSupportingTabBarController: UITabBarController, StickyViewControllerSupporting {
-    public var collapsableVCFlow: ExpandableViewController?
+    private var collapsableVCFlow: ExpandableViewController?
     public var collapsedHeight: CGFloat = 50.0
     public var animationDuration: TimeInterval = 0.5
     
