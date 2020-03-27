@@ -27,7 +27,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func removerTapped(_ sender: Any) {
-        tabController?.removeCollapsibleView(withAnimation: false)
+        tabController?.removeCollapsibleView(withAnimation: true, duration: 0.5)
     }
 }
 

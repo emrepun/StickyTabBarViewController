@@ -36,6 +36,7 @@ public class ExpandableViewController: UIViewController {
     
     let deviceHeight: CGFloat = UIScreen.main.bounds.height
     var collapsedHeight: CGFloat
+    var animationDuration: TimeInterval
     
     var minimisedView: UIView
     
@@ -47,13 +48,14 @@ public class ExpandableViewController: UIViewController {
     var animationProgressWhenInterrupted: CGFloat = 0
     
     private let childVC: Expandable
-    private let defaultDuration: TimeInterval = 0.5
     
     init(withChildVC childVC: Expandable,
          collapsedHeight: CGFloat,
+         animationDuration: TimeInterval,
          minimisedView: UIView) {
         self.childVC = childVC
         self.collapsedHeight = collapsedHeight
+        self.animationDuration = animationDuration
         self.minimisedView = minimisedView
         super.init(nibName: nil, bundle: nil)
     }
@@ -73,7 +75,7 @@ public class ExpandableViewController: UIViewController {
     }
     
     func collapse() {
-        animateTransitionIfNeeded(isEnlarging: !isEnlarged, duration: defaultDuration)
+        animateTransitionIfNeeded(isEnlarging: !isEnlarged, duration: animationDuration)
     }
     
     private func configureChildVC() {
@@ -89,7 +91,7 @@ public class ExpandableViewController: UIViewController {
     @objc private func enlargeWithTap(recognizer: UITapGestureRecognizer) {
         switch recognizer.state {
         case .ended:
-            animateTransitionIfNeeded(isEnlarging: !isEnlarged, duration: defaultDuration)
+            animateTransitionIfNeeded(isEnlarging: !isEnlarged, duration: animationDuration)
         default:
             break
         }
@@ -100,7 +102,7 @@ public class ExpandableViewController: UIViewController {
         case .began:
             let velocity = recognizer.velocity(in: childVC.view)
             isBeginningUpwards = isDirectionUpwards(for: velocity)
-            startInteractiveTransition(isEnlarging: !isEnlarged, duration: defaultDuration)
+            startInteractiveTransition(isEnlarging: !isEnlarged, duration: animationDuration)
         case .changed:
             let velocity = recognizer.velocity(in: childVC.view)
             isBeginningUpwards = isDirectionUpwards(for: velocity)

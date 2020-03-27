@@ -9,6 +9,7 @@
 public protocol StickyViewControllerSupporting: UITabBarController {
     var collapsableVCFlow: ExpandableViewController? { get set }
     var collapsedHeight: CGFloat { get }
+    var animationDuration: TimeInterval { get }
     func configureCollapsedTrainingView(withChildViewController childViewController: Expandable)
     func removeCollapsibleView(withAnimation: Bool, duration: TimeInterval)
     func collapseCollapsibleVC(duration: TimeInterval)
@@ -24,6 +25,7 @@ extension StickyViewControllerSupporting {
         childViewController.expander = self
         collapsableVCFlow = ExpandableViewController(withChildVC: childViewController,
                                                      collapsedHeight: collapsedHeight,
+                                                     animationDuration: animationDuration,
                                                      minimisedView: childViewController.minimisedView)
         collapsableVCFlow!.tabController = self
         view.addSubview(collapsableVCFlow!.view)
@@ -40,7 +42,7 @@ extension StickyViewControllerSupporting {
         collapsableVCFlow!.didMove(toParent: self)
     }
     
-    func removeCollapsibleView(withAnimation: Bool, duration: TimeInterval = 0.5) {
+    func removeCollapsibleView(withAnimation: Bool, duration: TimeInterval) {
         guard let collapsableVCFlow = collapsableVCFlow else {
             return
         }
@@ -64,7 +66,7 @@ extension StickyViewControllerSupporting {
         }
     }
     
-    func collapseCollapsibleVC(duration: TimeInterval = 1.0) {
+    func collapseCollapsibleVC(duration: TimeInterval) {
         guard let collapsableVCFlow = collapsableVCFlow else {
             return
         }
@@ -75,6 +77,8 @@ extension StickyViewControllerSupporting {
 import UIKit
 
 class MainTabBarController: UITabBarController, StickyViewControllerSupporting {
+    var animationDuration: TimeInterval = 0.5
+    
     var collapsedHeight: CGFloat = 60.0
     
     var collapsableVCFlow: ExpandableViewController?
