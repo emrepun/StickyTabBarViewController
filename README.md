@@ -30,7 +30,13 @@ if let tabBarController = tabBarController as? StickyViewControllerSupporting {
 
 Any view controller to have sticky behaviour must conform to ```Expandable``` and implement a ```minimisedView``` outlet.
 
-Later remove sticky view from the view controller that conforms to ```Expandable``` as following:
+Collapse sticky view from the view controller that conforms to ```Expandable``` as following:
+
+```
+expander?.collapseCollapsibleVC(duration: 0.5)
+```
+
+Remove sticky view from the view controller that conforms to ```Expandable``` as following:
 
 ```
 expander?.removeCollapsedView(withAnimation: true, duration: 0.5)
