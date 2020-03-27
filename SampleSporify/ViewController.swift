@@ -11,7 +11,7 @@ import UIKit
 class ViewController: UIViewController {
     
     var tabController: StickyViewControllerSupporting? {
-        if let tabBarController = tabBarController as? StickyViewControllerSupporting {
+        if let tabBarController = tabBarController as? StickyViewControllerSupportingTabBarController {
             return tabBarController
         }
         return nil
@@ -27,7 +27,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func removerTapped(_ sender: Any) {
-        tabController?.removeCollapsibleView(withAnimation: true, duration: 0.5)
+        tabController?.removeCollapsibleView(animated: true)
     }
 }
 
