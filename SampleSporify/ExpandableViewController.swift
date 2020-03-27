@@ -37,7 +37,6 @@ public class ExpandableViewController: UIViewController {
     let deviceHeight: CGFloat = UIScreen.main.bounds.height
     var collapsedHeight: CGFloat
     
-    private let childVC: Expandable
     var minimisedView: UIView
     
     // MARK: - Animation properties
@@ -46,6 +45,9 @@ public class ExpandableViewController: UIViewController {
     
     var runningAnimation: UIViewPropertyAnimator?
     var animationProgressWhenInterrupted: CGFloat = 0
+    
+    private let childVC: Expandable
+    private let defaultDuration: TimeInterval = 0.5
     
     init(withChildVC childVC: Expandable,
          collapsedHeight: CGFloat,
@@ -71,7 +73,7 @@ public class ExpandableViewController: UIViewController {
     }
     
     func collapse() {
-        animateTransitionIfNeeded(isEnlarging: !isEnlarged, duration: 1)
+        animateTransitionIfNeeded(isEnlarging: !isEnlarged, duration: defaultDuration)
     }
     
     private func configureChildVC() {
@@ -87,7 +89,7 @@ public class ExpandableViewController: UIViewController {
     @objc private func enlargeWithTap(recognizer: UITapGestureRecognizer) {
         switch recognizer.state {
         case .ended:
-            animateTransitionIfNeeded(isEnlarging: !isEnlarged, duration: 1)
+            animateTransitionIfNeeded(isEnlarging: !isEnlarged, duration: defaultDuration)
         default:
             break
         }
@@ -98,7 +100,7 @@ public class ExpandableViewController: UIViewController {
         case .began:
             let velocity = recognizer.velocity(in: childVC.view)
             isBeginningUpwards = isDirectionUpwards(for: velocity)
-            startInteractiveTransition(isEnlarging: !isEnlarged, duration: 1)
+            startInteractiveTransition(isEnlarging: !isEnlarged, duration: defaultDuration)
         case .changed:
             let velocity = recognizer.velocity(in: childVC.view)
             isBeginningUpwards = isDirectionUpwards(for: velocity)

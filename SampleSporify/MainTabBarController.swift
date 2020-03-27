@@ -40,7 +40,7 @@ extension StickyViewControllerSupporting {
         collapsableVCFlow!.didMove(toParent: self)
     }
     
-    func removeCollapsibleView(withAnimation: Bool, duration: TimeInterval = 1.0) {
+    func removeCollapsibleView(withAnimation: Bool, duration: TimeInterval = 0.5) {
         guard let collapsableVCFlow = collapsableVCFlow else {
             return
         }
