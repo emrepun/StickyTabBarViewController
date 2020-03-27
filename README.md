@@ -32,8 +32,5 @@ Later remove sticky view from the view controller that conforms to ```Expandable
 expander?.removeCollapsedView(withAnimation: true, duration: 0.5)
 ```
 
-# Known issues:
-- Tap does not expand view sometimes when the view is collapsed (user needs to drag, then it works fine again)
-
 # Pending Improvements:
 - It would be nice to have the ability to hide tab bar and status bar upon expanding, in parameterized way.
