@@ -1,6 +1,10 @@
 # SampleSporify
 Sticky and Collapsible View on top of tab bar development
 
+# Requirements:
+- iOS 10.0
+- Tab bar is visible as long as there is a sticky view controller allocated on top of it (any vc pushed at any point should not set ```hidesBottomBarWhenPushed``` to ```true```.
+
 Conform to ```StickyViewControllerSupporting``` from your custom tab bar controller
 
 # Implement following properties:
