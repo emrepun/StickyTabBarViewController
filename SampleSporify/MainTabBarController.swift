@@ -5,6 +5,7 @@
 //  Created by Emre Havan on 20.03.20.
 //  Copyright © 2020 Emre Havan. All rights reserved.
 //
+import UIKit
 
 public protocol StickyViewControllerSupporting: UITabBarController {
     var collapsableVCFlow: ExpandableViewController? { get set }
@@ -15,9 +16,12 @@ public protocol StickyViewControllerSupporting: UITabBarController {
     func collapseCollapsibleVC(duration: TimeInterval)
 }
 
-extension StickyViewControllerSupporting {
+public class StickyViewControllerSupportingTabBarController: UITabBarController, StickyViewControllerSupporting {
+    public var collapsableVCFlow: ExpandableViewController?
+    public var collapsedHeight: CGFloat = 50.0
+    public var animationDuration: TimeInterval = 0.5
     
-    func configureCollapsedTrainingView(withChildViewController childViewController: Expandable) {
+    public func configureCollapsedTrainingView(withChildViewController childViewController: Expandable) {
         guard collapsableVCFlow == nil else {
             return
         }
@@ -42,7 +46,7 @@ extension StickyViewControllerSupporting {
         collapsableVCFlow!.didMove(toParent: self)
     }
     
-    func removeCollapsibleView(withAnimation: Bool, duration: TimeInterval) {
+    public func removeCollapsibleView(withAnimation: Bool, duration: TimeInterval) {
         guard let collapsableVCFlow = collapsableVCFlow else {
             return
         }
@@ -66,7 +70,7 @@ extension StickyViewControllerSupporting {
         }
     }
     
-    func collapseCollapsibleVC(duration: TimeInterval) {
+    public func collapseCollapsibleVC(duration: TimeInterval) {
         guard let collapsableVCFlow = collapsableVCFlow else {
             return
         }
@@ -74,15 +78,8 @@ extension StickyViewControllerSupporting {
     }
 }
 
-import UIKit
+class MainTabBarController: StickyViewControllerSupportingTabBarController {
 
-class MainTabBarController: UITabBarController, StickyViewControllerSupporting {
-    var animationDuration: TimeInterval = 0.5
-    
-    var collapsedHeight: CGFloat = 60.0
-    
-    var collapsableVCFlow: ExpandableViewController?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
