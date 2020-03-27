@@ -9,7 +9,7 @@
 import UIKit
 
 public protocol Expandable: UIViewController {
-    var minimisedView: UIView! { get }
+    var minimisedView: UIView { get }
     var expander: StickyViewControllerSupporting? { get set }
 }
 

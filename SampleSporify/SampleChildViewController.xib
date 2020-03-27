@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SampleChildViewController" customModule="SampleSporify" customModuleProvider="target">
             <connections>
-                <outlet property="minimisedView" destination="BiF-D1-eME" id="vvU-lP-hiY"/>
+                <outlet property="collapsedStateView" destination="BiF-D1-eME" id="OMG-uk-GUk"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

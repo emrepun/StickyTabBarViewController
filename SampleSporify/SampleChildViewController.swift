@@ -9,8 +9,12 @@
 import UIKit
 
 class SampleChildViewController: UIViewController, Expandable {
+    var minimisedView: UIView {
+        return collapsedStateView
+    }
     
-    @IBOutlet weak var minimisedView: UIView!
+    
+    @IBOutlet weak var collapsedStateView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
