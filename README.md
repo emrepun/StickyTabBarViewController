@@ -5,41 +5,35 @@ Sticky and Collapsible View on top of tab bar development
 - iOS 10.0
 - Tab bar is visible as long as there is a sticky view controller allocated on top of it (any vc pushed at any point should not set ```hidesBottomBarWhenPushed``` to ```true```.
 
-Conform to ```StickyViewControllerSupporting``` from your custom tab bar controller
+Subclass ```StickyViewControllerSupportingTabBarController``` from your tab bar controller.
 
-# Implement following properties:
+# Override following properties:
 ```
-var collapsedHeight: CGFloat (Set it to minimised view's height you want)
-var collapsableVCFlow: ExpandableViewController? (keep it as optional)
-```
-
-# Do not override or implement following methods:
-```
-func configureCollapsedTrainingView(withChildViewController childViewController: Expandable)
-func removeCollapsedView(withAnimation: Bool, duration: TimeInterval)
+override var collapsedHeight: CGFloat (Set it to minimised view's height you want)
+override var animationDuration: TimeInterval (Set it to general animation duration)
 ```
 
 # Configure a ViewController in collapsed state as following:
 
 ```
-if let tabBarController = tabBarController as? StickyViewControllerSupporting {
+if let tabBarController = tabBarController as? StickyViewControllerSupportingTabBarController {
     let viewControllerToStick = SampleChildViewController() // example VC
     tabController?.configureCollapsedTrainingView(withChildViewController: viewControllerToStick)
 }
 ```
 
-Any view controller to have sticky behaviour must conform to ```Expandable``` and implement a ```minimisedView``` outlet.
+Any view controller to have sticky behaviour must conform to ```Expandable``` and implement a ```minimisedView```.
 
 Collapse sticky view from the view controller that conforms to ```Expandable``` as following:
 
 ```
-expander?.collapseCollapsibleVC(duration: 0.5)
+expander?.collapseCollapsibleViewController()
 ```
 
 Remove sticky view from the view controller that conforms to ```Expandable``` as following:
 
 ```
-expander?.removeCollapsedView(withAnimation: true, duration: 0.5)
+expander?.removeCollapsibleViewController(animated:)
 ```
 
 # Pending Improvements:
