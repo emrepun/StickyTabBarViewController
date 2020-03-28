@@ -16,7 +16,7 @@ public protocol Expandable: UIViewController {
 public extension Expandable {
     var expander: StickyViewControllerSupporting? {
         get {
-            if let tabBarController = UIApplication.shared.keyWindow?.rootViewController as? StickyViewControllerSupporting {
+            if let tabBarController = tabBarController as? StickyViewControllerSupporting {
                 return tabBarController
             } else {
                 return nil
@@ -136,7 +136,7 @@ internal class ExpandableViewController: UIViewController {
     private func animateTransitionIfNeeded(isEnlarging: Bool, duration: TimeInterval) {
         if runningAnimation == nil {
             runningAnimation = UIViewPropertyAnimator(duration: duration,
-                                                       dampingRatio: 1) {
+                                                      dampingRatio: 1) {
                                                         if isEnlarging {
                                                             self.heightConstraint.constant = self.deviceHeight - (self.tabController?.tabBar.frame.height ?? 0.0)
                                                             self.minimisedView.alpha = 0.0
