@@ -26,4 +26,7 @@ class SampleChildViewController: UIViewController, Expandable {
     @IBAction func collapseFromExpandedTapped(_ sender: Any) {
         expander?.collapseCollapsibleViewController()
     }
+    @IBAction func updateMinimisedViewTapped(_ sender: Any) {
+        collapsedStateView.backgroundColor = .red
+    }
 }
