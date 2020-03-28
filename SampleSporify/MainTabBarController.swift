@@ -10,9 +10,9 @@ import UIKit
 public protocol StickyViewControllerSupporting: UITabBarController {
     var collapsedHeight: CGFloat { get }
     var animationDuration: TimeInterval { get }
-    func configureCollapsedTrainingView(withChildViewController childViewController: Expandable)
-    func removeCollapsibleView(animated: Bool)
-    func collapseCollapsibleVC()
+    func configureCollapsedViewController(withChildViewController childViewController: Expandable)
+    func removeCollapsibleViewController(animated: Bool)
+    func collapseCollapsibleViewController()
 }
 
 public class StickyViewControllerSupportingTabBarController: UITabBarController, StickyViewControllerSupporting {
@@ -20,7 +20,7 @@ public class StickyViewControllerSupportingTabBarController: UITabBarController,
     public var collapsedHeight: CGFloat = 50.0
     public var animationDuration: TimeInterval = 0.5
     
-    final public func configureCollapsedTrainingView(withChildViewController childViewController: Expandable) {
+    final public func configureCollapsedViewController(withChildViewController childViewController: Expandable) {
         guard collapsableVCFlow == nil else {
             return
         }
@@ -45,7 +45,7 @@ public class StickyViewControllerSupportingTabBarController: UITabBarController,
         collapsableVCFlow!.didMove(toParent: self)
     }
     
-    final public func removeCollapsibleView(animated: Bool) {
+    final public func removeCollapsibleViewController(animated: Bool) {
         guard let collapsableVCFlow = collapsableVCFlow else {
             return
         }
@@ -69,7 +69,7 @@ public class StickyViewControllerSupportingTabBarController: UITabBarController,
         }
     }
     
-    final public func collapseCollapsibleVC() {
+    final public func collapseCollapsibleViewController() {
         guard let collapsableVCFlow = collapsableVCFlow else {
             return
         }

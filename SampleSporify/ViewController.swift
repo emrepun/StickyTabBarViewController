@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var tabController: StickyViewControllerSupporting? {
+    var tabController: StickyViewControllerSupportingTabBarController? {
         if let tabBarController = tabBarController as? StickyViewControllerSupportingTabBarController {
             return tabBarController
         }
@@ -23,11 +23,11 @@ class ViewController: UIViewController {
     }
     @IBAction func tapped(_ sender: Any) {
         let viewControllerToStick = SampleChildViewController()
-        tabController?.configureCollapsedTrainingView(withChildViewController: viewControllerToStick)
+        tabController?.configureCollapsedViewController(withChildViewController: viewControllerToStick)
     }
     
     @IBAction func removerTapped(_ sender: Any) {
-        tabController?.removeCollapsibleView(animated: true)
+        tabController?.removeCollapsibleViewController(animated: true)
     }
 }
 
