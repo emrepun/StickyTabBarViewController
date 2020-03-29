@@ -1,5 +1,7 @@
-# SampleSporify
+# StickyTabBarViewController
 Sticky and Collapsible View on top of tab bar development
+
+![](https://media.giphy.com/media/W519AMUoGGIDx8eHBE/giphy.gif)
 
 # Requirements:
 - iOS 10.0
@@ -7,11 +9,22 @@ Sticky and Collapsible View on top of tab bar development
 
 Subclass ```StickyViewControllerSupportingTabBarController``` from your tab bar controller.
 
-# Override following properties:
+# Configure animation duration or collapsed view height directly from your tabbar controller:
 ```
-override var collapsedHeight: CGFloat (Set it to minimised view's height you want)
-override var animationDuration: TimeInterval (Set it to general animation duration)
+import UIKit
+import StickyTabBarViewController
+
+class MainTabBarController: StickyViewControllerSupportingTabBarController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        updateCollapsedHeight(to: 50.0)
+        updateAnimationDuration(to: 0.5)
+    }
+}
+
 ```
+Can also update it any time by accessing to tabBarController.
 
 # Configure a ViewController in collapsed state as following:
 
@@ -35,6 +48,7 @@ Remove sticky view from the view controller that conforms to ```Expandable``` as
 ```
 expander?.removeCollapsibleViewController(animated:)
 ```
+
 
 # Pending Improvements:
 - It would be nice to have the ability to hide tab bar and status bar upon expanding, in parameterized way.
