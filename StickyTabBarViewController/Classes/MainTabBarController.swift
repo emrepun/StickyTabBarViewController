@@ -8,17 +8,25 @@
 import UIKit
 
 public protocol StickyViewControllerSupporting: UITabBarController {
-    var collapsedHeight: CGFloat { get }
-    var animationDuration: TimeInterval { get }
+    var collapsedHeight: CGFloat { get set }
+    var animationDuration: TimeInterval { get set }
     func configureCollapsedViewController(withChildViewController childViewController: Expandable)
     func removeCollapsibleViewController(animated: Bool)
     func collapseCollapsibleViewController()
 }
 
-public class StickyViewControllerSupportingTabBarController: UITabBarController, StickyViewControllerSupporting {
+open class StickyViewControllerSupportingTabBarController: UITabBarController, StickyViewControllerSupporting {
     private var collapsableVCFlow: ExpandableViewController?
     public var collapsedHeight: CGFloat = 50.0
     public var animationDuration: TimeInterval = 0.5
+    
+    final public func updateCollapsedHeight(to value: CGFloat) {
+        collapsedHeight = value
+    }
+    
+    final  public func updateAnimationDuration(to value: TimeInterval) {
+        animationDuration = value
+    }
     
     final public func configureCollapsedViewController(withChildViewController childViewController: Expandable) {
         guard collapsableVCFlow == nil else {
@@ -74,12 +82,5 @@ public class StickyViewControllerSupportingTabBarController: UITabBarController,
             return
         }
         collapsableVCFlow.collapse()
-    }
-}
-
-class MainTabBarController: StickyViewControllerSupportingTabBarController {
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
     }
 }

@@ -1,0 +1,16 @@
+PODS:
+  - StickyTabBarViewController (1.0.0)
+
+DEPENDENCIES:
+  - StickyTabBarViewController (from `../`)
+
+EXTERNAL SOURCES:
+  StickyTabBarViewController:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  StickyTabBarViewController: 26e8845d15f6d2561cd37c49801a0226259aa4f6
+
+PODFILE CHECKSUM: 6b7b2ceb0e5d8fdc39e578c1ff71da3cbbd61a4c
+
+COCOAPODS: 1.8.4

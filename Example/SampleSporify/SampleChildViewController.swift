@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import StickyTabBarViewController
 
 class SampleChildViewController: UIViewController, Expandable {
     var minimisedView: UIView {

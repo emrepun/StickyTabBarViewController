@@ -1,0 +1,6 @@
+framework module StickyTabBarViewController {
+  umbrella header "StickyTabBarViewController-umbrella.h"
+
+  export *
+  module * { export * }
+}
