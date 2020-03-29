@@ -7,7 +7,7 @@ Sticky and Collapsible View on top of tab bar development
 
 Subclass ```StickyViewControllerSupportingTabBarController``` from your tab bar controller.
 
-# Configure animation duration or collapsed view height directly from subclass of StickyViewControllerSupportingTabBarController as following:
+# Configure animation duration or collapsed view height directly from your tabbar controller:
 ```
 import UIKit
 import StickyTabBarViewController
