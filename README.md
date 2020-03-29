@@ -7,11 +7,22 @@ Sticky and Collapsible View on top of tab bar development
 
 Subclass ```StickyViewControllerSupportingTabBarController``` from your tab bar controller.
 
-# Override following properties:
+# Configure animation duration or collapsed view height directly from subclass of StickyViewControllerSupportingTabBarController as following:
 ```
-override var collapsedHeight: CGFloat (Set it to minimised view's height you want)
-override var animationDuration: TimeInterval (Set it to general animation duration)
+import UIKit
+import StickyTabBarViewController
+
+class MainTabBarController: StickyViewControllerSupportingTabBarController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        updateCollapsedHeight(to: 50.0)
+        updateAnimationDuration(to: 0.5)
+    }
+}
+
 ```
+Can also update it any time by accessing to tabBarController.
 
 # Configure a ViewController in collapsed state as following:
 
