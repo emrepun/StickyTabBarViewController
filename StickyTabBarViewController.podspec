@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name         = 'StickyTabBarViewController'
-  s.version      = '1.0.0'
+  s.version      = '1.0.1'
   s.summary      = 'A sticky and expandable view controller on top of TabBar'
 
   s.description  = <<-DESC
@@ -25,7 +25,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '10.0'
   s.swift_version    = '5.0'
 
-  s.source       = { :git => 'https://github.com/emrepun/StickyTabBarViewController.git', :tag => '#{spec.version}' }
+  s.source       = { :git => 'https://github.com/emrepun/StickyTabBarViewController.git', :tag => '#{s.version}' }
 
   s.source_files  = 'StickyTabBarViewController/Classes/**/*'
 
