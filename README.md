@@ -1,4 +1,4 @@
-# SampleSporify
+# StickyTabBarViewController
 Sticky and Collapsible View on top of tab bar development
 
 # Requirements:
