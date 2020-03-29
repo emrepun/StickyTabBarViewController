@@ -47,5 +47,8 @@ Remove sticky view from the view controller that conforms to ```Expandable``` as
 expander?.removeCollapsibleViewController(animated:)
 ```
 
+# Examples:
+![First](https://media.giphy.com/media/gf6Fk8JXliaUAiwwC1/giphy.gif)
+
 # Pending Improvements:
 - It would be nice to have the ability to hide tab bar and status bar upon expanding, in parameterized way.
