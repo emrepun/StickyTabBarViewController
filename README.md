@@ -1,6 +1,8 @@
 # StickyTabBarViewController
 Sticky and Collapsible View on top of tab bar development
 
+![](https://media.giphy.com/media/W519AMUoGGIDx8eHBE/giphy.gif)
+
 # Requirements:
 - iOS 10.0
 - Tab bar is visible as long as there is a sticky view controller allocated on top of it (any vc pushed at any point should not set ```hidesBottomBarWhenPushed``` to ```true```.
@@ -47,8 +49,6 @@ Remove sticky view from the view controller that conforms to ```Expandable``` as
 expander?.removeCollapsibleViewController(animated:)
 ```
 
-# Examples:
-![First](https://media.giphy.com/media/gf6Fk8JXliaUAiwwC1/giphy.gif)
 
 # Pending Improvements:
 - It would be nice to have the ability to hide tab bar and status bar upon expanding, in parameterized way.
