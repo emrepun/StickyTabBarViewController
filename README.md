@@ -7,6 +7,15 @@ Sticky and Collapsible View on top of tab bar development
 - iOS 10.0
 - Tab bar is visible as long as there is a sticky view controller allocated on top of it (any vc pushed at any point should not set ```hidesBottomBarWhenPushed``` to ```true```.
 
+## Installation
+
+StickyTabBarViewController is available through [CocoaPods](http://cocoapods.org). To install
+it, simply add the following line to your Podfile:
+
+```ruby
+pod 'StickyTabBarViewController'
+```
+
 Subclass ```StickyViewControllerSupportingTabBarController``` from your tab bar controller.
 
 # Configure animation duration or collapsed view height directly from your tabbar controller:
