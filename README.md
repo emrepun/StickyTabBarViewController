@@ -1,5 +1,5 @@
 # StickyTabBarViewController
-Sticky and Collapsible View on top of tab bar development
+Sticky and Collapsible View Controller on top of tab bar
 
 ![](https://media.giphy.com/media/W519AMUoGGIDx8eHBE/giphy.gif)
 
@@ -35,16 +35,11 @@ class MainTabBarController: StickyViewControllerSupportingTabBarController {
 ```
 Can also update it any time by accessing to tabBarController.
 
-# Configure a ViewController in collapsed state as following:
-
-```swift
-if let tabBarController = tabBarController as? StickyViewControllerSupportingTabBarController {
-    let viewControllerToStick = SampleChildViewController() // example VC
-    tabController?.configureCollapsedTrainingView(withChildViewController: viewControllerToStick)
-}
-```
+# Configurations:
 
 Any view controller to have sticky behaviour must conform to ```Expandable``` and implement a ```minimisedView```.
+
+The implemented ```minimisedView``` should be ideally anchored on top of the view controller's view and its height (either by a direct height constraint or some other constraints) should be equal to the updated value of collapsedHeight ```updateCollapsedHeight(to: 50.0)```. You don't need to worry about hiding or showing it since it is handled by StickyTabBarViewController itself.
 
 ```swift
 var minimisedView: UIView {
@@ -63,7 +58,16 @@ Remove sticky view from the view controller that conforms to ```Expandable``` as
 ```swift
 expander?.removeCollapsibleViewController(animated:)
 ```
+Configure a ViewController in collapsed state as following
 
+```swift
+if let tabBarController = tabBarController as? StickyViewControllerSupportingTabBarController {
+    let viewControllerToStick = SampleChildViewController() // example VC
+    tabController?.configureCollapsedTrainingView(withChildViewController: viewControllerToStick)
+}
+```
 
 # Pending Improvements:
 - It would be nice to have the ability to hide tab bar and status bar upon expanding, in parameterized way.
+- Better support for UINavigationController (maybe not expand as high as behind the status bar)
+- Right now it is not possible to configure or overwrite the implented sticky VC, one must first remove it and then implement another if needed. Maybe implement overwriting if configure is called while there is already a view controller allocated?
