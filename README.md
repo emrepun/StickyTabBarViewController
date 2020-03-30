@@ -3,7 +3,7 @@ Sticky and Collapsible View Controller on top of tab bar
 
 ![](https://media.giphy.com/media/W519AMUoGGIDx8eHBE/giphy.gif)
 
-# Requirements:
+## Requirements:
 - iOS 10.0
 - Tab bar is visible as long as there is a sticky view controller allocated on top of it (any vc pushed at any point should not set ```hidesBottomBarWhenPushed``` to ```true```.
 
@@ -16,9 +16,12 @@ it, simply add the following line to your Podfile:
 pod 'StickyTabBarViewController'
 ```
 
+## Usage
+
 Subclass ```StickyViewControllerSupportingTabBarController``` from your tab bar controller.
 
-# Configure animation duration or collapsed view height directly from your tabbar controller:
+Configure animation duration or collapsed view height directly from your tabbar controller:
+
 ```swift
 import UIKit
 import StickyTabBarViewController
@@ -35,7 +38,7 @@ class MainTabBarController: StickyViewControllerSupportingTabBarController {
 ```
 Can also update it any time by accessing to tabBarController.
 
-# Configurations:
+## Presented View Controller Configurations:
 
 Any view controller to have sticky behaviour must conform to ```Expandable``` and implement a ```minimisedView```.
 
@@ -67,7 +70,7 @@ if let tabBarController = tabBarController as? StickyViewControllerSupportingTab
 }
 ```
 
-# Pending Improvements:
+## Pending Improvements:
 - It would be nice to have the ability to hide tab bar and status bar upon expanding, in parameterized way.
 - Better support for UINavigationController (maybe not expand as high as behind the status bar)
 - Right now it is not possible to configure or overwrite the implented sticky VC, one must first remove it and then implement another if needed. Maybe implement overwriting if configure is called while there is already a view controller allocated?
