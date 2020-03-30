@@ -19,7 +19,7 @@ pod 'StickyTabBarViewController'
 Subclass ```StickyViewControllerSupportingTabBarController``` from your tab bar controller.
 
 # Configure animation duration or collapsed view height directly from your tabbar controller:
-```
+```swift
 import UIKit
 import StickyTabBarViewController
 
@@ -37,7 +37,7 @@ Can also update it any time by accessing to tabBarController.
 
 # Configure a ViewController in collapsed state as following:
 
-```
+```swift
 if let tabBarController = tabBarController as? StickyViewControllerSupportingTabBarController {
     let viewControllerToStick = SampleChildViewController() // example VC
     tabController?.configureCollapsedTrainingView(withChildViewController: viewControllerToStick)
@@ -46,15 +46,21 @@ if let tabBarController = tabBarController as? StickyViewControllerSupportingTab
 
 Any view controller to have sticky behaviour must conform to ```Expandable``` and implement a ```minimisedView```.
 
+```swift
+var minimisedView: UIView {
+    return UIView() // or return your outlet for minimised view.
+}
+```
+
 Collapse sticky view from the view controller that conforms to ```Expandable``` as following:
 
-```
+```swift
 expander?.collapseCollapsibleViewController()
 ```
 
 Remove sticky view from the view controller that conforms to ```Expandable``` as following:
 
-```
+```swift
 expander?.removeCollapsibleViewController(animated:)
 ```
 
