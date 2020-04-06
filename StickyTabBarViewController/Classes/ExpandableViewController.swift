@@ -14,7 +14,7 @@ public protocol Expandable: UIViewController {
 }
 
 public extension Expandable {
-    var parent: StickyViewControllerSupporting? {
+    var expander: StickyViewControllerSupporting? {
         get { tabBarController as? StickyViewControllerSupporting }
         
         set { /* No steps needed */ }
