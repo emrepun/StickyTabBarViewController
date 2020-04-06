@@ -14,7 +14,6 @@ class SampleChildViewController: UIViewController, Expandable {
         return collapsedStateView
     }
     
-    
     @IBOutlet weak var collapsedStateView: UIView!
     
     override func viewDidLoad() {
@@ -22,10 +21,10 @@ class SampleChildViewController: UIViewController, Expandable {
     }
     
     @IBAction func shutDownTapped(_ sender: Any) {
-        expander?.removeCollapsibleViewController(animated: true)
+        container?.removeCollapsableChild(animated: true)
     }
     @IBAction func collapseFromExpandedTapped(_ sender: Any) {
-        expander?.collapseCollapsibleViewController()
+        container?.collapseChild()
     }
     @IBAction func updateMinimisedViewTapped(_ sender: Any) {
         collapsedStateView.backgroundColor = .red

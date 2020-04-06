@@ -24,11 +24,11 @@ class ViewController: UIViewController {
     }
     @IBAction func tapped(_ sender: Any) {
         let viewControllerToStick = SampleChildViewController()
-        tabController?.configureCollapsedViewController(withChildViewController: viewControllerToStick)
+        tabController?.configureCollapsableChild(viewControllerToStick)
     }
     
     @IBAction func removerTapped(_ sender: Any) {
-        tabController?.removeCollapsibleViewController(animated: true)
+        tabController?.removeCollapsableChild(animated: true)
     }
 }
 
