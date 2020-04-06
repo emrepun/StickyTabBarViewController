@@ -10,11 +10,11 @@ import UIKit
 
 public protocol Expandable: UIViewController {
     var minimisedView: UIView { get }
-    var parent: StickyViewControllerSupporting? { get set }
+    var container: StickyViewControllerSupporting? { get set }
 }
 
 public extension Expandable {
-    var expander: StickyViewControllerSupporting? {
+    var container: StickyViewControllerSupporting? {
         get { tabBarController as? StickyViewControllerSupporting }
         
         set { /* No steps needed */ }
