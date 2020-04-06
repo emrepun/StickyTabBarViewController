@@ -24,6 +24,8 @@ open class StickyViewControllerSupportingTabBarController: UITabBarController, S
     // MARK: - Private properties
     private var collapsableVCFlow: ExpandableViewController?
     
+    // MARK: - Public API
+    
     final public func configureCollapsableChild(_ childViewController: Expandable) {
         guard collapsableVCFlow == nil else {
             return
