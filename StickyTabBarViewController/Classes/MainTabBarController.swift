@@ -38,22 +38,21 @@ open class StickyViewControllerSupportingTabBarController: UITabBarController, S
                                                      collapsedHeight: collapsedHeight,
                                                      animationDuration: animationDuration,
                                                      minimisedView: childViewController.minimisedView)
-        guard let collapsableVCFlow = collapsableVCFlow else {
-            return
-        }
-        collapsableVCFlow.tabController = self
-        view.addSubview(collapsableVCFlow.view)
-        addChild(collapsableVCFlow)
-        collapsableVCFlow.view.translatesAutoresizingMaskIntoConstraints = false
-        collapsableVCFlow.view.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        collapsableVCFlow.view.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+                                                     animationDuration: animationDuration)
+        
+        collapsableVCFlow!.tabController = self
+        view.addSubview(collapsableVCFlow!.view)
+        addChild(collapsableVCFlow!)
+        collapsableVCFlow!.view.translatesAutoresizingMaskIntoConstraints = false
+        collapsableVCFlow!.view.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        collapsableVCFlow!.view.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
 
-        collapsableVCFlow.view.bottomAnchor.constraint(equalTo: tabBar.topAnchor).isActive = true
-        let heightConstraint = collapsableVCFlow.view.heightAnchor.constraint(equalToConstant: collapsedHeight)
+        collapsableVCFlow!.view.bottomAnchor.constraint(equalTo: tabBar.topAnchor).isActive = true
+        let heightConstraint = collapsableVCFlow!.view.heightAnchor.constraint(equalToConstant: collapsedHeight)
         heightConstraint.isActive = true
-        collapsableVCFlow.heightConstraint = heightConstraint
+        collapsableVCFlow!.heightConstraint = heightConstraint
 
-        collapsableVCFlow.didMove(toParent: self)
+        collapsableVCFlow!.didMove(toParent: self)
     }
     
     final public func removeCollapsibleViewController(animated: Bool) {
