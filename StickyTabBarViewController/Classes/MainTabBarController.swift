@@ -36,8 +36,6 @@ open class StickyViewControllerSupportingTabBarController: UITabBarController, S
         childViewController.expander = self
         collapsableVCFlow = ExpandableViewController(withChildVC: childViewController,
                                                      collapsedHeight: collapsedHeight,
-                                                     animationDuration: animationDuration,
-                                                     minimisedView: childViewController.minimisedView)
                                                      animationDuration: animationDuration)
         
         collapsableVCFlow!.tabController = self

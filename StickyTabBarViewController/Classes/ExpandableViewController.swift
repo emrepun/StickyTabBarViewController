@@ -38,7 +38,9 @@ internal class ExpandableViewController: UIViewController {
     var collapsedHeight: CGFloat
     var animationDuration: TimeInterval
     
-    var minimisedView: UIView
+    // MARK: - Private properties
+    
+    private var minimisedView: UIView
     
     // MARK: - Animation properties
     
@@ -51,12 +53,11 @@ internal class ExpandableViewController: UIViewController {
     
     init(withChildVC childVC: Expandable,
          collapsedHeight: CGFloat,
-         animationDuration: TimeInterval,
-         minimisedView: UIView) {
+         animationDuration: TimeInterval) {
         self.childVC = childVC
         self.collapsedHeight = collapsedHeight
         self.animationDuration = animationDuration
-        self.minimisedView = minimisedView
+        self.minimisedView = childVC.minimisedView
         super.init(nibName: nil, bundle: nil)
     }
     
