@@ -16,17 +16,13 @@ public protocol StickyViewControllerSupporting: UITabBarController {
 }
 
 open class StickyViewControllerSupportingTabBarController: UITabBarController, StickyViewControllerSupporting {
-    private var collapsableVCFlow: ExpandableViewController?
+    
+    // MARK: - Public properties
     public var collapsedHeight: CGFloat = 50.0
     public var animationDuration: TimeInterval = 0.5
     
-    final public func updateCollapsedHeight(to value: CGFloat) {
-        collapsedHeight = value
-    }
-    
-    final  public func updateAnimationDuration(to value: TimeInterval) {
-        animationDuration = value
-    }
+    // MARK: - Private properties
+    private var collapsableVCFlow: ExpandableViewController?
     
     final public func configureCollapsableChild(_ childViewController: Expandable) {
         guard collapsableVCFlow == nil else {
