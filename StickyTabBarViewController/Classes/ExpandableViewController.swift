@@ -29,6 +29,8 @@ public extension Expandable {
 
 internal class ExpandableViewController: UIViewController {
     
+    // MARK: - Internal properties
+    
     var heightConstraint: NSLayoutConstraint!
     var isEnlarged = false
     
