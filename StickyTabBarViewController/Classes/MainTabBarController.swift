@@ -26,6 +26,8 @@ open class StickyViewControllerSupportingTabBarController: UITabBarController, S
     
     // MARK: - Public API
     
+    /// Prepares View Controller to be embedded as a child (wrapped in another internal View Controller)
+    /// - Parameter childViewController: A View Controller conforming to `Expandable` protocol
     final public func configureCollapsableChild(_ childViewController: Expandable) {
         guard collapsableVCFlow == nil else {
             return
@@ -51,6 +53,8 @@ open class StickyViewControllerSupportingTabBarController: UITabBarController, S
         collapsableVCFlow!.didMove(toParent: self)
     }
     
+    /// Removes child View Controller from view hierarchy and parent
+    /// - Parameter animated: Whether or not the removal should be animated
     final public func removeCollapsableChild(animated: Bool) {
         guard let collapsableVCFlow = collapsableVCFlow else {
             return
@@ -75,6 +79,7 @@ open class StickyViewControllerSupportingTabBarController: UITabBarController, S
         }
     }
     
+    /// Collapse already presented child
     final public func collapseChild() {
         guard let collapsableVCFlow = collapsableVCFlow else {
             return
