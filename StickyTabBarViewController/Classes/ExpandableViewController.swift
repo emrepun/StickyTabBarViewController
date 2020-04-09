@@ -21,7 +21,7 @@ public extension Expandable {
     }
 }
 
-internal class ExpandableViewController: UIViewController {
+class ExpandableViewController: UIViewController {
     
     // MARK: - Internal properties
     
