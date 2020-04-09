@@ -168,9 +168,7 @@ class ExpandableViewController: UIViewController {
     }
     
     private func startInteractiveTransition(isEnlarging: Bool, duration: TimeInterval) {
-        if runningAnimation == nil {
-            animateTransitionIfNeeded(isEnlarging: isEnlarging, duration: duration)
-        }
+        animateTransitionIfNeeded(isEnlarging: isEnlarging, duration: duration)
         runningAnimation?.pauseAnimation()
         animationProgressWhenInterrupted = runningAnimation?.fractionComplete ?? 0.0
     }
