@@ -2,6 +2,7 @@
 Sticky and Collapsible View Controller on top of tab bar
 
 ![](https://media.giphy.com/media/W519AMUoGGIDx8eHBE/giphy.gif)
+![](https://media.giphy.com/media/eNvbHbouudojLUu1dZ/giphy.gif)
 
 ## Requirements:
 - iOS 10.0
