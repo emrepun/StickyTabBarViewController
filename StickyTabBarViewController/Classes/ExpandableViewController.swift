@@ -137,34 +137,39 @@ class ExpandableViewController: UIViewController {
     }
     
     private func animateTransitionIfNeeded(isEnlarging: Bool, duration: TimeInterval) {
-        if runningAnimation == nil {
-            runningAnimation = UIViewPropertyAnimator(duration: duration,
-                                                      dampingRatio: 1) {
-                                                        if isEnlarging {
-                                                            self.heightConstraint.constant = self.deviceHeight - (self.tabController?.tabBar.frame.height ?? 0.0)
-                                                            self.minimisedView.alpha = 0.0
-                                                        } else {
-                                                            self.heightConstraint.constant = self.collapsedHeight
-                                                            self.minimisedView.alpha = 1.0
-                                                        }
-                                                        self.view.setNeedsLayout()
-                                                        self.tabController?.view.setNeedsLayout()
-                                                        self.view.layoutIfNeeded()
-                                                        self.tabController?.view.layoutIfNeeded()
-            }
-            
-            runningAnimation?.addCompletion { (position) in
-                switch position {
-                case .end:
-                    self.isEnlarged = !self.isEnlarged
-                default:
-                    ()
-                }
-                self.runningAnimation = nil
-            }
-            
-            runningAnimation?.startAnimation()
+        guard
+            runningAnimation == nil,
+            let tabController = tabController else {
+                return
         }
+        
+        runningAnimation = UIViewPropertyAnimator(
+            duration: duration,
+            dampingRatio: 1) {
+                if isEnlarging {
+                    self.heightConstraint.constant = self.deviceHeight - tabController.tabBar.frame.height
+                    self.minimisedView.alpha = 0.0
+                } else {
+                    self.heightConstraint.constant = self.collapsedHeight
+                    self.minimisedView.alpha = 1.0
+                }
+                self.view.setNeedsLayout()
+                tabController.view.setNeedsLayout()
+                self.view.layoutIfNeeded()
+                tabController.view.layoutIfNeeded()
+        }
+        
+        runningAnimation?.addCompletion { (position) in
+            switch position {
+            case .end:
+                self.isEnlarged = !self.isEnlarged
+            default:
+                ()
+            }
+            self.runningAnimation = nil
+        }
+        
+        runningAnimation?.startAnimation()
     }
     
     private func startInteractiveTransition(isEnlarging: Bool, duration: TimeInterval) {
