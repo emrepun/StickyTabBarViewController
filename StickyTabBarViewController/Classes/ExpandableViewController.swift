@@ -37,15 +37,15 @@ internal class ExpandableViewController: UIViewController {
     // MARK: - Private properties
     
     private var minimisedView: UIView
+    private let childVC: Expandable
     
     // MARK: - Animation properties
     
     lazy var isBeginningUpwards = !isEnlarged
-    
     var runningAnimation: UIViewPropertyAnimator?
     var animationProgressWhenInterrupted: CGFloat = 0
     
-    private let childVC: Expandable
+    // MARK: - Initialisers
     
     init(withChildVC childVC: Expandable,
          collapsedHeight: CGFloat,
@@ -61,6 +61,8 @@ internal class ExpandableViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Lifecycle
+    
     override public func viewDidLoad() {
         super.viewDidLoad()
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(enlargeWithTap))
@@ -71,9 +73,13 @@ internal class ExpandableViewController: UIViewController {
         configureChildVC()
     }
     
+    // MARK: - Internal API
+    
     func collapse() {
         animateTransitionIfNeeded(isEnlarging: !isEnlarged, duration: animationDuration)
     }
+    
+    // MARK: - Private API
     
     private func configureChildVC() {
         addChild(childVC)
