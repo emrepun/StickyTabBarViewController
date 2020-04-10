@@ -21,7 +21,7 @@ public extension Expandable {
     }
 }
 
-internal class ExpandableViewController: UIViewController {
+class ExpandableViewController: UIViewController {
     
     // MARK: - Internal properties
     
@@ -37,15 +37,15 @@ internal class ExpandableViewController: UIViewController {
     // MARK: - Private properties
     
     private var minimisedView: UIView
+    private let childVC: Expandable
     
     // MARK: - Animation properties
     
     lazy var isBeginningUpwards = !isEnlarged
-    
     var runningAnimation: UIViewPropertyAnimator?
     var animationProgressWhenInterrupted: CGFloat = 0
     
-    private let childVC: Expandable
+    // MARK: - Initialisers
     
     init(withChildVC childVC: Expandable,
          collapsedHeight: CGFloat,
@@ -61,6 +61,8 @@ internal class ExpandableViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Lifecycle
+    
     override public func viewDidLoad() {
         super.viewDidLoad()
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(enlargeWithTap))
@@ -71,9 +73,13 @@ internal class ExpandableViewController: UIViewController {
         configureChildVC()
     }
     
+    // MARK: - Internal API
+    
     func collapse() {
         animateTransitionIfNeeded(isEnlarging: !isEnlarged, duration: animationDuration)
     }
+    
+    // MARK: - Private API
     
     private func configureChildVC() {
         addChild(childVC)
@@ -131,40 +137,43 @@ internal class ExpandableViewController: UIViewController {
     }
     
     private func animateTransitionIfNeeded(isEnlarging: Bool, duration: TimeInterval) {
-        if runningAnimation == nil {
-            runningAnimation = UIViewPropertyAnimator(duration: duration,
-                                                      dampingRatio: 1) {
-                                                        if isEnlarging {
-                                                            self.heightConstraint.constant = self.deviceHeight - (self.tabController?.tabBar.frame.height ?? 0.0)
-                                                            self.minimisedView.alpha = 0.0
-                                                        } else {
-                                                            self.heightConstraint.constant = self.collapsedHeight
-                                                            self.minimisedView.alpha = 1.0
-                                                        }
-                                                        self.view.setNeedsLayout()
-                                                        self.tabController?.view.setNeedsLayout()
-                                                        self.view.layoutIfNeeded()
-                                                        self.tabController?.view.layoutIfNeeded()
-            }
-            
-            runningAnimation?.addCompletion { (position) in
-                switch position {
-                case .end:
-                    self.isEnlarged = !self.isEnlarged
-                default:
-                    ()
-                }
-                self.runningAnimation = nil
-            }
-            
-            runningAnimation?.startAnimation()
+        guard
+            runningAnimation == nil,
+            let tabController = tabController else {
+                return
         }
+        
+        runningAnimation = UIViewPropertyAnimator(
+            duration: duration,
+            dampingRatio: 1) {
+                if isEnlarging {
+                    self.heightConstraint.constant = self.deviceHeight - tabController.tabBar.frame.height
+                    self.minimisedView.alpha = 0.0
+                } else {
+                    self.heightConstraint.constant = self.collapsedHeight
+                    self.minimisedView.alpha = 1.0
+                }
+                self.view.setNeedsLayout()
+                tabController.view.setNeedsLayout()
+                self.view.layoutIfNeeded()
+                tabController.view.layoutIfNeeded()
+        }
+        
+        runningAnimation?.addCompletion { (position) in
+            switch position {
+            case .end:
+                self.isEnlarged = !self.isEnlarged
+            default:
+                ()
+            }
+            self.runningAnimation = nil
+        }
+        
+        runningAnimation?.startAnimation()
     }
     
     private func startInteractiveTransition(isEnlarging: Bool, duration: TimeInterval) {
-        if runningAnimation == nil {
-            animateTransitionIfNeeded(isEnlarging: isEnlarging, duration: duration)
-        }
+        animateTransitionIfNeeded(isEnlarging: isEnlarging, duration: duration)
         runningAnimation?.pauseAnimation()
         animationProgressWhenInterrupted = runningAnimation?.fractionComplete ?? 0.0
     }
