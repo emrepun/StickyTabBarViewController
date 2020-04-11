@@ -10,53 +10,52 @@ import UIKit
 public protocol StickyViewControllerSupporting: UITabBarController {
     var collapsedHeight: CGFloat { get set }
     var animationDuration: TimeInterval { get set }
-    func configureCollapsedViewController(withChildViewController childViewController: Expandable)
-    func removeCollapsibleViewController(animated: Bool)
-    func collapseCollapsibleViewController()
+    func configureCollapsableChild(_ childViewController: Expandable)
+    func removeCollapsableChild(animated: Bool)
+    func collapseChild()
 }
 
 open class StickyViewControllerSupportingTabBarController: UITabBarController, StickyViewControllerSupporting {
-    private var collapsableVCFlow: ExpandableViewController?
+    
+    // MARK: - Public properties
     public var collapsedHeight: CGFloat = 50.0
     public var animationDuration: TimeInterval = 0.5
     
-    final public func updateCollapsedHeight(to value: CGFloat) {
-        collapsedHeight = value
-    }
+    // MARK: - Private properties
+    private var collapsableVCFlow: ExpandableViewController?
     
-    final  public func updateAnimationDuration(to value: TimeInterval) {
-        animationDuration = value
-    }
+    // MARK: - Public API
     
-    final public func configureCollapsedViewController(withChildViewController childViewController: Expandable) {
+    /// Prepares View Controller to be embedded as a child (wrapped in another internal View Controller)
+    /// - Parameter childViewController: A View Controller conforming to `Expandable` protocol
+    final public func configureCollapsableChild(_ childViewController: Expandable) {
         guard collapsableVCFlow == nil else {
             return
         }
         childViewController.loadView()
-        childViewController.expander = self
+        childViewController.container = self
         collapsableVCFlow = ExpandableViewController(withChildVC: childViewController,
                                                      collapsedHeight: collapsedHeight,
-                                                     animationDuration: animationDuration,
-                                                     minimisedView: childViewController.minimisedView)
-        guard let collapsableVCFlow = collapsableVCFlow else {
-            return
-        }
-        collapsableVCFlow.tabController = self
-        view.addSubview(collapsableVCFlow.view)
-        addChild(collapsableVCFlow)
-        collapsableVCFlow.view.translatesAutoresizingMaskIntoConstraints = false
-        collapsableVCFlow.view.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        collapsableVCFlow.view.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+                                                     animationDuration: animationDuration)
+        
+        collapsableVCFlow!.tabController = self
+        view.addSubview(collapsableVCFlow!.view)
+        addChild(collapsableVCFlow!)
+        collapsableVCFlow!.view.translatesAutoresizingMaskIntoConstraints = false
+        collapsableVCFlow!.view.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        collapsableVCFlow!.view.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
 
-        collapsableVCFlow.view.bottomAnchor.constraint(equalTo: tabBar.topAnchor).isActive = true
-        let heightConstraint = collapsableVCFlow.view.heightAnchor.constraint(equalToConstant: collapsedHeight)
+        collapsableVCFlow!.view.bottomAnchor.constraint(equalTo: tabBar.topAnchor).isActive = true
+        let heightConstraint = collapsableVCFlow!.view.heightAnchor.constraint(equalToConstant: collapsedHeight)
         heightConstraint.isActive = true
-        collapsableVCFlow.heightConstraint = heightConstraint
+        collapsableVCFlow!.heightConstraint = heightConstraint
 
-        collapsableVCFlow.didMove(toParent: self)
+        collapsableVCFlow!.didMove(toParent: self)
     }
     
-    final public func removeCollapsibleViewController(animated: Bool) {
+    /// Removes child View Controller from view hierarchy and parent
+    /// - Parameter animated: Whether or not the removal should be animated
+    final public func removeCollapsableChild(animated: Bool) {
         guard let collapsableVCFlow = collapsableVCFlow else {
             return
         }
@@ -80,7 +79,8 @@ open class StickyViewControllerSupportingTabBarController: UITabBarController, S
         }
     }
     
-    final public func collapseCollapsibleViewController() {
+    /// Collapse already presented child
+    final public func collapseChild() {
         guard let collapsableVCFlow = collapsableVCFlow else {
             return
         }

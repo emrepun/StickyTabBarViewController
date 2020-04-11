@@ -3,18 +3,18 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0D2F8EC5F4F57DCE5251604F6F322939 /* StickyTabBarViewController-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B423E108066996B7E709BB837A400878 /* StickyTabBarViewController-dummy.m */; };
-		1B492DACB096F982CF37B661C57516CE /* ExpandableViewController.xib in Sources */ = {isa = PBXBuildFile; fileRef = 83759BC6A3AFB5FEB7A74C4D5FC52484 /* ExpandableViewController.xib */; };
+		0D2F8EC5F4F57DCE5251604F6F322939 /* StickyTabBarViewController-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = ACBDB2C3051519249C1AC775C357B104 /* StickyTabBarViewController-dummy.m */; };
+		1B492DACB096F982CF37B661C57516CE /* ExpandableViewController.xib in Sources */ = {isa = PBXBuildFile; fileRef = 89512DFE8926A92B736405C3CD940760 /* ExpandableViewController.xib */; };
 		3DF5F1228285312E448117A570BA4C91 /* Pods-SampleSporify-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CD5636C22673C3D9AC0CB4CD67B0CCE /* Pods-SampleSporify-dummy.m */; };
 		5C2338A781144A5DCA63E84520545775 /* Pods-SampleSporify-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2000A3E1964B5355FE641F6DEA4742BB /* Pods-SampleSporify-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		652900B9020D9546334BAEA03D97F4B9 /* StickyTabBarViewController-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A2303ADEB15ECD257CC96DE21AD889C /* StickyTabBarViewController-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		652900B9020D9546334BAEA03D97F4B9 /* StickyTabBarViewController-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C809BD3C990CC266DDF4489B2FC345BF /* StickyTabBarViewController-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		859517D185D3A50589003299D5EDA0DB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
-		9D40EA529128F79FAD234C935B4E6DF9 /* ExpandableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9EED575275107906ADDD60858ECF44 /* ExpandableViewController.swift */; };
-		9E046379EC29748705DF25BDC9296FF9 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78D013EAD9C441F8514C45CF6C4941D /* MainTabBarController.swift */; };
+		9D40EA529128F79FAD234C935B4E6DF9 /* ExpandableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C53370F72DC40A0670C2A84425CAA9 /* ExpandableViewController.swift */; };
+		9E046379EC29748705DF25BDC9296FF9 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6D076594CF6B60DAA340C1AEB3F5EF /* MainTabBarController.swift */; };
 		DD3F6B2317FCDC1558FB254CAC12CE62 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
@@ -29,30 +29,31 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		02AB665C230C78954554C6C12D44F245 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
 		0619C6027B5ACE5EF33F47EE6935DA29 /* Pods_SampleSporify.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_SampleSporify.framework; path = "Pods-SampleSporify.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		10CAD0AEF548B2F0E6B89EC7AA09E367 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
 		1CD5636C22673C3D9AC0CB4CD67B0CCE /* Pods-SampleSporify-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SampleSporify-dummy.m"; sourceTree = "<group>"; };
 		2000A3E1964B5355FE641F6DEA4742BB /* Pods-SampleSporify-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SampleSporify-umbrella.h"; sourceTree = "<group>"; };
-		216DEA8E219514239FA92ACAE8942D11 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
 		276C3924DDDEA90BD2E7F927B9720DD7 /* Pods-SampleSporify.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SampleSporify.debug.xcconfig"; sourceTree = "<group>"; };
 		3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		47E4B93196F0DE53F5FE61E552625371 /* StickyTabBarViewController-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "StickyTabBarViewController-prefix.pch"; sourceTree = "<group>"; };
-		4A2303ADEB15ECD257CC96DE21AD889C /* StickyTabBarViewController-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "StickyTabBarViewController-umbrella.h"; sourceTree = "<group>"; };
-		4D9EED575275107906ADDD60858ECF44 /* ExpandableViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpandableViewController.swift; path = StickyTabBarViewController/Classes/ExpandableViewController.swift; sourceTree = "<group>"; };
+		55B6B5B66613D0298CF0DE6AA7BB440B /* StickyTabBarViewController.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = StickyTabBarViewController.xcconfig; sourceTree = "<group>"; };
 		58368520FB9D4D2D01E57602E1ADE8E9 /* Pods-SampleSporify.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-SampleSporify.modulemap"; sourceTree = "<group>"; };
 		6466837F2912DDBD7A5E26B961264D4D /* Pods-SampleSporify.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SampleSporify.release.xcconfig"; sourceTree = "<group>"; };
+		670C4C5B0D2F3E7A712FCFC091F2E3F8 /* StickyTabBarViewController-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "StickyTabBarViewController-Info.plist"; sourceTree = "<group>"; };
+		6914679CE76617F356AAF9C08E5CF911 /* StickyTabBarViewController.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = StickyTabBarViewController.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		6BEB63F69602F1FC0016D985D5B12A2B /* Pods-SampleSporify-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SampleSporify-Info.plist"; sourceTree = "<group>"; };
-		6EC44EFE3CECE138F28438BF991F3539 /* StickyTabBarViewController.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = StickyTabBarViewController.modulemap; sourceTree = "<group>"; };
+		70C53370F72DC40A0670C2A84425CAA9 /* ExpandableViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpandableViewController.swift; path = StickyTabBarViewController/Classes/ExpandableViewController.swift; sourceTree = "<group>"; };
 		7830F3D291C9B0C31063795718AC9629 /* Pods-SampleSporify-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SampleSporify-acknowledgements.markdown"; sourceTree = "<group>"; };
-		83759BC6A3AFB5FEB7A74C4D5FC52484 /* ExpandableViewController.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = ExpandableViewController.xib; path = StickyTabBarViewController/Classes/ExpandableViewController.xib; sourceTree = "<group>"; };
+		7D09063492EF9A2CC4200B9417A965C3 /* StickyTabBarViewController.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = StickyTabBarViewController.modulemap; sourceTree = "<group>"; };
+		89512DFE8926A92B736405C3CD940760 /* ExpandableViewController.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = ExpandableViewController.xib; path = StickyTabBarViewController/Classes/ExpandableViewController.xib; sourceTree = "<group>"; };
+		8A6D076594CF6B60DAA340C1AEB3F5EF /* MainTabBarController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MainTabBarController.swift; path = StickyTabBarViewController/Classes/MainTabBarController.swift; sourceTree = "<group>"; };
 		8D428BBA34F6A25205E5AB79738B73C7 /* Pods-SampleSporify-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SampleSporify-acknowledgements.plist"; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		AD637926B2E5BC2C42FFB9E543DE8BBC /* StickyTabBarViewController-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "StickyTabBarViewController-Info.plist"; sourceTree = "<group>"; };
-		B423E108066996B7E709BB837A400878 /* StickyTabBarViewController-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "StickyTabBarViewController-dummy.m"; sourceTree = "<group>"; };
-		B873AEAAB34CC83E24C7FBDDBFDF2088 /* StickyTabBarViewController.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = StickyTabBarViewController.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		BC8030F89C8B3071A22A51A49D1B0C78 /* StickyTabBarViewController.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = StickyTabBarViewController.xcconfig; sourceTree = "<group>"; };
+		ACBDB2C3051519249C1AC775C357B104 /* StickyTabBarViewController-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "StickyTabBarViewController-dummy.m"; sourceTree = "<group>"; };
 		C0F349A4EBA3DFC5738BA7737A9F428A /* StickyTabBarViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = StickyTabBarViewController.framework; path = StickyTabBarViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C809BD3C990CC266DDF4489B2FC345BF /* StickyTabBarViewController-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "StickyTabBarViewController-umbrella.h"; sourceTree = "<group>"; };
+		DC8F6E0280544B9F5D3B56F8B99DF194 /* StickyTabBarViewController-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "StickyTabBarViewController-prefix.pch"; sourceTree = "<group>"; };
 		DE9A52720214840A2D07755C44F724BC /* Pods-SampleSporify-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SampleSporify-frameworks.sh"; sourceTree = "<group>"; };
-		E78D013EAD9C441F8514C45CF6C4941D /* MainTabBarController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MainTabBarController.swift; path = StickyTabBarViewController/Classes/MainTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,15 +76,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3A1EA9A01D786025BF12DF02B06673A2 /* Support Files */ = {
+		1273F9057D6FFA32B79E160D7A687A9C /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				6EC44EFE3CECE138F28438BF991F3539 /* StickyTabBarViewController.modulemap */,
-				BC8030F89C8B3071A22A51A49D1B0C78 /* StickyTabBarViewController.xcconfig */,
-				B423E108066996B7E709BB837A400878 /* StickyTabBarViewController-dummy.m */,
-				AD637926B2E5BC2C42FFB9E543DE8BBC /* StickyTabBarViewController-Info.plist */,
-				47E4B93196F0DE53F5FE61E552625371 /* StickyTabBarViewController-prefix.pch */,
-				4A2303ADEB15ECD257CC96DE21AD889C /* StickyTabBarViewController-umbrella.h */,
+				7D09063492EF9A2CC4200B9417A965C3 /* StickyTabBarViewController.modulemap */,
+				55B6B5B66613D0298CF0DE6AA7BB440B /* StickyTabBarViewController.xcconfig */,
+				ACBDB2C3051519249C1AC775C357B104 /* StickyTabBarViewController-dummy.m */,
+				670C4C5B0D2F3E7A712FCFC091F2E3F8 /* StickyTabBarViewController-Info.plist */,
+				DC8F6E0280544B9F5D3B56F8B99DF194 /* StickyTabBarViewController-prefix.pch */,
+				C809BD3C990CC266DDF4489B2FC345BF /* StickyTabBarViewController-umbrella.h */,
 			);
 			name = "Support Files";
 			path = "Example/Pods/Target Support Files/StickyTabBarViewController";
@@ -98,34 +99,12 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		52277DC850D4FDF0888384B33D3C47E6 /* StickyTabBarViewController */ = {
-			isa = PBXGroup;
-			children = (
-				4D9EED575275107906ADDD60858ECF44 /* ExpandableViewController.swift */,
-				83759BC6A3AFB5FEB7A74C4D5FC52484 /* ExpandableViewController.xib */,
-				E78D013EAD9C441F8514C45CF6C4941D /* MainTabBarController.swift */,
-				AE91390964BCF98FA8A0B3ED6F7F7B9D /* Pod */,
-				3A1EA9A01D786025BF12DF02B06673A2 /* Support Files */,
-			);
-			name = StickyTabBarViewController;
-			path = ../..;
-			sourceTree = "<group>";
-		};
 		986E18354E6731C730B98E7E382F5122 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
 				C1C27AE1D1B58E514679309F22B46116 /* Pods-SampleSporify */,
 			);
 			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
-		AE91390964BCF98FA8A0B3ED6F7F7B9D /* Pod */ = {
-			isa = PBXGroup;
-			children = (
-				216DEA8E219514239FA92ACAE8942D11 /* LICENSE */,
-				B873AEAAB34CC83E24C7FBDDBFDF2088 /* StickyTabBarViewController.podspec */,
-			);
-			name = Pod;
 			sourceTree = "<group>";
 		};
 		C0834CEBB1379A84116EF29F93051C60 /* iOS */ = {
@@ -172,10 +151,33 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		DA6DDAEA1724AB8BC0F56F5062387BA8 /* StickyTabBarViewController */ = {
+			isa = PBXGroup;
+			children = (
+				70C53370F72DC40A0670C2A84425CAA9 /* ExpandableViewController.swift */,
+				89512DFE8926A92B736405C3CD940760 /* ExpandableViewController.xib */,
+				8A6D076594CF6B60DAA340C1AEB3F5EF /* MainTabBarController.swift */,
+				DA8BC70C10A619920FC73E58B52235D9 /* Pod */,
+				1273F9057D6FFA32B79E160D7A687A9C /* Support Files */,
+			);
+			name = StickyTabBarViewController;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		DA8BC70C10A619920FC73E58B52235D9 /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				10CAD0AEF548B2F0E6B89EC7AA09E367 /* LICENSE */,
+				02AB665C230C78954554C6C12D44F245 /* README.md */,
+				6914679CE76617F356AAF9C08E5CF911 /* StickyTabBarViewController.podspec */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
 		DCD4D116F6A81100EA109E128CB572CC /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				52277DC850D4FDF0888384B33D3C47E6 /* StickyTabBarViewController */,
+				DA6DDAEA1724AB8BC0F56F5062387BA8 /* StickyTabBarViewController */,
 			);
 			name = "Development Pods";
 			sourceTree = "<group>";
@@ -249,7 +251,7 @@
 				LastUpgradeCheck = 1100;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -382,7 +384,7 @@
 		};
 		3108FCD4CDDF1A80552F480CA9650FD2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BC8030F89C8B3071A22A51A49D1B0C78 /* StickyTabBarViewController.xcconfig */;
+			baseConfigurationReference = 55B6B5B66613D0298CF0DE6AA7BB440B /* StickyTabBarViewController.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
@@ -517,7 +519,7 @@
 		};
 		C7D7C798F83D917BCE14D522CE67D916 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BC8030F89C8B3071A22A51A49D1B0C78 /* StickyTabBarViewController.xcconfig */;
+			baseConfigurationReference = 55B6B5B66613D0298CF0DE6AA7BB440B /* StickyTabBarViewController.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
