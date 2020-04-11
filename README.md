@@ -23,6 +23,8 @@ Subclass ```StickyViewControllerSupportingTabBarController``` from your tab bar 
 
 Configure animation duration or collapsed view height directly from your tabbar controller:
 
+From ```viewDidLoad```:
+
 ```swift
 import UIKit
 import StickyTabBarViewController
@@ -31,12 +33,31 @@ class MainTabBarController: StickyViewControllerSupportingTabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateCollapsedHeight(to: 50.0)
-        updateAnimationDuration(to: 0.5)
+        collapsedHeight = 50.0
+        animationDuration = 0.5
     }
 }
 
 ```
+
+By overriding initialisers of the tabbar controller:
+
+```swift
+override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    // here if you are using xib
+    collapsedHeight = 50.0
+    animationDuration = 0.5
+}
+
+required init?(coder: NSCoder) {
+    super.init(coder: coder)
+    // configure also on required init (if you are using storyboard for example)
+    collapsedHeight = 50.0
+    animationDuration = 0.5
+}
+```
+
 Can also update it any time by accessing to tabBarController.
 
 ## Presented View Controller Configurations:
@@ -54,20 +75,20 @@ var minimisedView: UIView {
 Collapse sticky view from the view controller that conforms to ```Expandable``` as following:
 
 ```swift
-expander?.collapseCollapsibleViewController()
+container?.collapseChild()
 ```
 
 Remove sticky view from the view controller that conforms to ```Expandable``` as following:
 
 ```swift
-expander?.removeCollapsibleViewController(animated:)
+container?.removeCollapsableChild(animated:)
 ```
 Configure a ViewController in collapsed state as following
 
 ```swift
 if let tabBarController = tabBarController as? StickyViewControllerSupportingTabBarController {
     let viewControllerToStick = SampleChildViewController() // example VC
-    tabController?.configureCollapsedTrainingView(withChildViewController: viewControllerToStick)
+    tabController?.configureCollapsableChild(viewControllerToStick)
 }
 ```
 
