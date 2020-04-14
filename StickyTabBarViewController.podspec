@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name         = 'StickyTabBarViewController'
-  s.version      = '1.0.3'
+  s.version      = '0.0.3'
   s.summary      = 'A sticky and expandable view controller on top of TabBar'
 
   s.description  = <<-DESC
