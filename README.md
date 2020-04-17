@@ -64,7 +64,7 @@ Can also update it any time by accessing to tabBarController.
 
 Any view controller to have sticky behaviour must conform to ```Expandable``` and implement a ```minimisedView```.
 
-The implemented ```minimisedView``` should be ideally anchored on top of the view controller's view and its height (either by a direct height constraint or some other constraints) should be equal to the updated value of collapsedHeight ```updateCollapsedHeight(to: 50.0)```. You don't need to worry about hiding or showing it since it is handled by StickyTabBarViewController itself.
+The implemented ```minimisedView``` should be ideally anchored on top of the view controller's view and its height (either by a direct height constraint or some other constraints) should be equal to the value of ```collapsedHeight```. You don't need to worry about hiding or showing it since it is handled by StickyTabBarViewController itself.
 
 ```swift
 var minimisedView: UIView {
