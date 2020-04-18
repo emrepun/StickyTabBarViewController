@@ -14,8 +14,9 @@ StickyTabBarViewController is available through [CocoaPods](http://cocoapods.org
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'StickyTabBarViewController'
+pod 'StickyTabBarViewController', '0.0.3'
 ```
+(Latest version is 0.0.3, although there is a tag with higher version number)
 
 ## Usage
 
