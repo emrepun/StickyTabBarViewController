@@ -10,7 +10,7 @@ import UIKit
 public protocol StickyViewControllerSupporting: UITabBarController {
     var collapsedHeight: CGFloat { get set }
     var animationDuration: TimeInterval { get set }
-    func configureCollapsableChild(_ childViewController: Expandable)
+    func configureCollapsableChild(_ childViewController: Expandable, isFullScreenOnFirstAppearance: Bool)
     func removeCollapsableChild(animated: Bool)
     func collapseChild()
 }
