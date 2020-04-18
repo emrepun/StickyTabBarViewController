@@ -13,6 +13,7 @@ public protocol StickyViewControllerSupporting: UITabBarController {
     func configureCollapsableChild(_ childViewController: Expandable, isFullScreenOnFirstAppearance: Bool)
     func removeCollapsableChild(animated: Bool)
     func collapseChild()
+    func expandChild()
 }
 
 open class StickyViewControllerSupportingTabBarController: UITabBarController, StickyViewControllerSupporting {
@@ -94,5 +95,13 @@ open class StickyViewControllerSupportingTabBarController: UITabBarController, S
             return
         }
         collapsableVCFlow.collapse()
+    }
+    
+    /// Expand already presented child
+    final public func expandChild() {
+        guard let collapsableVCFlow = collapsableVCFlow else {
+            return
+        }
+        collapsableVCFlow.expand()
     }
 }
