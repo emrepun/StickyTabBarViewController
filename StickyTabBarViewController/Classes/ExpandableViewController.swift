@@ -143,7 +143,10 @@ class ExpandableViewController: UIViewController {
     private func animateTransitionIfNeeded(isEnlarging: Bool, duration: TimeInterval) {
         guard
             runningAnimation == nil,
-            let tabController = tabController else {
+            let tabController = tabController,
+            // Make sure we are not trying to animate to same state by checking if the child is already in the same
+            // state of passed `isEnlarging` value.
+            self.isEnlarged != isEnlarging else {
                 return
         }
         
