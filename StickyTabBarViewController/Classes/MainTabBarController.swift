@@ -28,7 +28,10 @@ open class StickyViewControllerSupportingTabBarController: UITabBarController, S
     
     /// Prepares View Controller to be embedded as a child (wrapped in another internal View Controller)
     /// - Parameter childViewController: A View Controller conforming to `Expandable` protocol
-    final public func configureCollapsableChild(_ childViewController: Expandable) {
+    /// - Parameter isFullScreenOnFirstAppearance: A boolean to determine if child view controller should be presented
+    /// full screen on first configuration
+    final public func configureCollapsableChild(_ childViewController: Expandable,
+                                                isFullScreenOnFirstAppearance: Bool) {
         guard collapsableVCFlow == nil else {
             return
         }
@@ -51,6 +54,12 @@ open class StickyViewControllerSupportingTabBarController: UITabBarController, S
         collapsableVCFlow!.heightConstraint = heightConstraint
 
         collapsableVCFlow!.didMove(toParent: self)
+        
+        if isFullScreenOnFirstAppearance {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+                self.collapsableVCFlow!.expand()
+            }
+        }
     }
     
     /// Removes child View Controller from view hierarchy and parent
