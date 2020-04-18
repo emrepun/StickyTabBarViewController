@@ -76,7 +76,7 @@ class ExpandableViewController: UIViewController {
     // MARK: - Internal API
     
     func collapse() {
-        animateTransitionIfNeeded(isEnlarging: !isEnlarged, duration: animationDuration)
+        animateTransitionIfNeeded(isEnlarging: false, duration: animationDuration)
     }
     
     // MARK: - Private API
