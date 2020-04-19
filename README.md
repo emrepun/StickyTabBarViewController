@@ -16,7 +16,7 @@ it, simply add the following line to your Podfile:
 ```ruby
 pod 'StickyTabBarViewController', '0.0.3'
 ```
-(Latest version is 0.0.3, although there is a tag with higher version number)
+(Latest version is 0.0.3, although there is a tag with higher version number (1.0.2))
 
 ## Usage
 
