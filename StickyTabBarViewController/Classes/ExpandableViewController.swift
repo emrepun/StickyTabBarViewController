@@ -1,6 +1,6 @@
 //
 //  ExpandableViewController.swift
-//  SampleSporify
+//  StickyTabBarViewController
 //
 //  Created by Emre Havan on 20.03.20.
 //  Copyright © 2020 Emre Havan. All rights reserved.
@@ -75,8 +75,12 @@ class ExpandableViewController: UIViewController {
     
     // MARK: - Internal API
     
+    func expand() {
+        animateTransitionIfNeeded(isEnlarging: true, duration: animationDuration)
+    }
+    
     func collapse() {
-        animateTransitionIfNeeded(isEnlarging: !isEnlarged, duration: animationDuration)
+        animateTransitionIfNeeded(isEnlarging: false, duration: animationDuration)
     }
     
     // MARK: - Private API
@@ -139,7 +143,10 @@ class ExpandableViewController: UIViewController {
     private func animateTransitionIfNeeded(isEnlarging: Bool, duration: TimeInterval) {
         guard
             runningAnimation == nil,
-            let tabController = tabController else {
+            let tabController = tabController,
+            // Make sure we are not trying to animate to same state by checking if the child is already in the same
+            // state of passed `isEnlarging` value.
+            self.isEnlarged != isEnlarging else {
                 return
         }
         

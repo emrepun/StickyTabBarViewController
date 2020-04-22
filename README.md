@@ -14,9 +14,9 @@ StickyTabBarViewController is available through [CocoaPods](http://cocoapods.org
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'StickyTabBarViewController', '0.0.3'
+pod 'StickyTabBarViewController', '0.0.4'
 ```
-(Latest version is 0.0.3, although there is a tag with higher version number (1.0.2))
+(Latest version is 0.0.4, although there is a tag with higher version number (1.0.2))
 
 ## Usage
 
@@ -79,21 +79,51 @@ Collapse sticky view from the view controller that conforms to ```Expandable``` 
 container?.collapseChild()
 ```
 
+Expand sticky view from the view controller that conforms to ```Expandable``` as following:
+
+```swift
+container?.expandChild()
+```
+
 Remove sticky view from the view controller that conforms to ```Expandable``` as following:
 
 ```swift
 container?.removeCollapsableChild(animated:)
 ```
-Configure a ViewController in collapsed state as following
+
+Configure a Sticky child ViewController as following:
 
 ```swift
 if let tabBarController = tabBarController as? StickyViewControllerSupportingTabBarController {
-    let viewControllerToStick = SampleChildViewController() // example VC
-    tabController?.configureCollapsableChild(viewControllerToStick)
+    let viewControllerToStick = SampleChildViewController()
+    tabBarController.configureCollapsableChild(viewControllerToStick,
+                                               isFullScreenOnFirstAppearance: true)
+}
+
+## Interaction with the presented sticky child view controller from anywhere with tabBarController access:
+
+Access tabBarController to interact with sticky child view controller:
+
+```swift
+var tabController: StickyViewControllerSupportingTabBarController? {
+    if let tabBarController = tabBarController as? StickyViewControllerSupportingTabBarController {
+        return tabBarController
+    }
+    return nil
 }
 ```
 
+Expand/collapse child view controller:
+
+```swift
+tabController?.collapseChild()
+```
+
+```swift
+tabController?.expandChild()
+```
+
 ## Pending Improvements:
-- It would be nice to have the ability to hide tab bar and status bar upon expanding, in parameterized way.
+- It would be nice to have the ability to hide tab bar and status bar upon expanding, in parameterised way.
 - Better support for UINavigationController (maybe not expand as high as behind the status bar)
-- Right now it is not possible to configure or overwrite the implented sticky VC, one must first remove it and then implement another if needed. Maybe implement overwriting if configure is called while there is already a view controller allocated?
+- Right now it is not possible to configure or overwrite the implemented sticky VC, one must first remove it and then implement another if needed. Maybe implement overwriting if configure is called while there is already a view controller allocated?
