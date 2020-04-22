@@ -1,6 +1,6 @@
 //
 //  ExpandableViewController.swift
-//  SampleSporify
+//  StickyTabBarViewController
 //
 //  Created by Emre Havan on 20.03.20.
 //  Copyright © 2020 Emre Havan. All rights reserved.
