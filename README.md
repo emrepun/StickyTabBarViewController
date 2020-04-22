@@ -99,6 +99,7 @@ if let tabBarController = tabBarController as? StickyViewControllerSupportingTab
     tabBarController.configureCollapsableChild(viewControllerToStick,
                                                isFullScreenOnFirstAppearance: true)
 }
+```
 
 ## Interaction with the presented sticky child view controller from anywhere with tabBarController access:
 
