@@ -80,15 +80,11 @@ open class StickyViewControllerSupportingTabBarController: UITabBarController, S
                             self.view.layoutIfNeeded()
             }) { (completed) in
                 if completed {
-                    collapsableVCFlow.view.removeFromSuperview()
-                    collapsableVCFlow.removeFromParent()
-                    self.collapsableVCFlow = nil
+                    self.removeStickyViewController()
                 }
             }
         } else {
-            collapsableVCFlow.view.removeFromSuperview()
-            collapsableVCFlow.removeFromParent()
-            self.collapsableVCFlow = nil
+            removeStickyViewController()
         }
     }
     
@@ -106,5 +102,17 @@ open class StickyViewControllerSupportingTabBarController: UITabBarController, S
             return
         }
         collapsableVCFlow.expand()
+    }
+    
+    private func removeStickyViewController() {
+        guard let childViewController = childViewController, let collapsableVCFlow = collapsableVCFlow else {
+            return
+        }
+        childViewController.view.removeFromSuperview()
+        childViewController.removeFromParent()
+        collapsableVCFlow.view.removeFromSuperview()
+        collapsableVCFlow.removeFromParent()
+        self.collapsableVCFlow = nil
+        self.childViewController = nil
     }
 }
