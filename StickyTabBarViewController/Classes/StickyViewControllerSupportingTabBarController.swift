@@ -107,11 +107,9 @@ open class StickyViewControllerSupportingTabBarController: UITabBarController, S
     // MARK: - Private API
     
     private func removeStickyViewController() {
-        guard let childViewController = childViewController, let collapsableVCFlow = collapsableVCFlow else {
+        guard let collapsableVCFlow = collapsableVCFlow else {
             return
         }
-        childViewController.view.removeFromSuperview()
-        childViewController.removeFromParent()
         collapsableVCFlow.view.removeFromSuperview()
         collapsableVCFlow.removeFromParent()
         self.collapsableVCFlow = nil
