@@ -126,5 +126,4 @@ tabController?.expandChild()
 
 ## Pending Improvements:
 - It would be nice to have the ability to hide tab bar and status bar upon expanding, in parameterised way.
-- Better support for UINavigationController (maybe not expand as high as behind the status bar)
 - Right now it is not possible to configure or overwrite the implemented sticky VC, one must first remove it and then implement another if needed. Maybe implement overwriting if configure is called while there is already a view controller allocated?
