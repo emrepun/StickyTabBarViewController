@@ -88,7 +88,7 @@ class ExpandableViewController: UIViewController {
     private func configureChildVC() {
         addChild(childVC)
         view.addSubview(childVC.view)
-        childVC.view.frame = self.view.bounds
+        childVC.view.frame = view.bounds
         childVC.didMove(toParent: self)
     }
     
