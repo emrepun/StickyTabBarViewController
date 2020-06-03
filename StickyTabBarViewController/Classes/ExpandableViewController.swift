@@ -88,10 +88,7 @@ class ExpandableViewController: UIViewController {
     private func configureChildVC() {
         addChild(childVC)
         view.addSubview(childVC.view)
-        childVC.view.topAnchor.constraint(equalTo: view.topAnchor, constant: 0.0).isActive = true
-        childVC.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0.0).isActive = true
-        childVC.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0.0).isActive = true
-        childVC.view.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0.0).isActive = true
+        childVC.view.frame = view.bounds
         childVC.didMove(toParent: self)
     }
     
