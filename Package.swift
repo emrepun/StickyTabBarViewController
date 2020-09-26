@@ -1,7 +1,7 @@
 // swift-tools-version:5.1
 import PackageDescription
 
-let package = Package(name: "Alamofire",
+let package = Package(name: "StickyTabBarViewController",
                       platforms: [.iOS(.v10)],
                       products: [.library(name: "StickyTabBarViewController",
                                           targets: ["StickyTabBarViewController"])],
