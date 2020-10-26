@@ -10,8 +10,14 @@ Sticky and Collapsible View Controller on top of tab bar
 
 ## Installation
 
-StickyTabBarViewController is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+StickyTabBarViewController is available through [SPM](https://swift.org/package-manager/) and [CocoaPods](http://cocoapods.org).
+
+- SPM Installation:
+Add it as a new package dependency with https://github.com/emrepun/StickyTabBarViewController.git
+
+- CocoaPods Installation:
+
+Simply add the following line to your Podfile:
 
 ```ruby
 pod 'StickyTabBarViewController', '1.0.5'
