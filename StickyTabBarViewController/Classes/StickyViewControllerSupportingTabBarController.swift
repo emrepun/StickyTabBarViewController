@@ -38,7 +38,7 @@ open class StickyViewControllerSupportingTabBarController: UITabBarController, S
         guard collapsableVCFlow == nil else {
             return
         }
-        childViewController.loadView()
+        childViewController.loadViewIfNeeded()
         childViewController.container = self
         self.childViewController = childViewController
         collapsableVCFlow = ExpandableViewController(withChildVC: childViewController,
