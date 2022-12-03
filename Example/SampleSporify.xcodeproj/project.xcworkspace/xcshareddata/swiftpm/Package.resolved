@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "stickytabbarviewcontroller",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/emrepun/StickyTabBarViewController.git",
+      "state" : {
+        "revision" : "d4695db804d081f7a41b28e1fffdf1f0182b2ba9",
+        "version" : "1.0.6"
+      }
+    }
+  ],
+  "version" : 2
+}

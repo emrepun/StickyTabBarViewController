@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,6 +17,7 @@
 		C38980A224256AD800F5F786 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38980A124256AD800F5F786 /* SceneDelegate.swift */; };
 		C38980AC24257D5700F5F786 /* SampleChildViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38980AA24257D5700F5F786 /* SampleChildViewController.swift */; };
 		C38980AD24257D5700F5F786 /* SampleChildViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C38980AB24257D5700F5F786 /* SampleChildViewController.xib */; };
+		FBCA824F293BE70E003B2BC6 /* StickyTabBarViewController in Frameworks */ = {isa = PBXBuildFile; productRef = FBCA824E293BE70E003B2BC6 /* StickyTabBarViewController */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FBCA824F293BE70E003B2BC6 /* StickyTabBarViewController in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,6 +105,9 @@
 			dependencies = (
 			);
 			name = SampleSporify;
+			packageProductDependencies = (
+				FBCA824E293BE70E003B2BC6 /* StickyTabBarViewController */,
+			);
 			productName = SampleSporify;
 			productReference = C3898084242569D100F5F786 /* SampleSporify.app */;
 			productType = "com.apple.product-type.application";
@@ -131,6 +136,9 @@
 				Base,
 			);
 			mainGroup = C389807B242569D100F5F786;
+			packageReferences = (
+				FBCA824D293BE70E003B2BC6 /* XCRemoteSwiftPackageReference "StickyTabBarViewController" */,
+			);
 			productRefGroup = C3898085242569D100F5F786 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -240,7 +248,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -294,7 +302,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -310,7 +318,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SampleSporify/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -328,7 +336,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SampleSporify/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -362,6 +370,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FBCA824D293BE70E003B2BC6 /* XCRemoteSwiftPackageReference "StickyTabBarViewController" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/emrepun/StickyTabBarViewController.git";
+			requirement = {
+				kind = exactVersion;
+				version = 1.0.6;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FBCA824E293BE70E003B2BC6 /* StickyTabBarViewController */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FBCA824D293BE70E003B2BC6 /* XCRemoteSwiftPackageReference "StickyTabBarViewController" */;
+			productName = StickyTabBarViewController;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C389807C242569D100F5F786 /* Project object */;
 }
